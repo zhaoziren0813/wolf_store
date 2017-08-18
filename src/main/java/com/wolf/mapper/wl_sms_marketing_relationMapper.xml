@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_sms_marketing_relationMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_sms_marketing_relation" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="smsMarketingId" property="smsmarketingid" jdbcType="VARCHAR" />
+    <result column="relationType" property="relationtype" jdbcType="VARCHAR" />
+    <result column="relationId" property="relationid" jdbcType="VARCHAR" />
+    <result column="createUserId" property="createuserid" jdbcType="VARCHAR" />
+    <result column="createDateTime" property="createdatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, smsMarketingId, relationType, relationId, createUserId, createDateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_sms_marketing_relation
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_sms_marketing_relation
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_sms_marketing_relation" >
+    insert into wl_sms_marketing_relation (id, smsMarketingId, relationType, 
+      relationId, createUserId, createDateTime
+      )
+    values (#{id,jdbcType=VARCHAR}, #{smsmarketingid,jdbcType=VARCHAR}, #{relationtype,jdbcType=VARCHAR}, 
+      #{relationid,jdbcType=VARCHAR}, #{createuserid,jdbcType=VARCHAR}, #{createdatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_sms_marketing_relation" >
+    insert into wl_sms_marketing_relation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="smsmarketingid != null" >
+        smsMarketingId,
+      </if>
+      <if test="relationtype != null" >
+        relationType,
+      </if>
+      <if test="relationid != null" >
+        relationId,
+      </if>
+      <if test="createuserid != null" >
+        createUserId,
+      </if>
+      <if test="createdatetime != null" >
+        createDateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="smsmarketingid != null" >
+        #{smsmarketingid,jdbcType=VARCHAR},
+      </if>
+      <if test="relationtype != null" >
+        #{relationtype,jdbcType=VARCHAR},
+      </if>
+      <if test="relationid != null" >
+        #{relationid,jdbcType=VARCHAR},
+      </if>
+      <if test="createuserid != null" >
+        #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdatetime != null" >
+        #{createdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_sms_marketing_relation" >
+    update wl_sms_marketing_relation
+    <set >
+      <if test="smsmarketingid != null" >
+        smsMarketingId = #{smsmarketingid,jdbcType=VARCHAR},
+      </if>
+      <if test="relationtype != null" >
+        relationType = #{relationtype,jdbcType=VARCHAR},
+      </if>
+      <if test="relationid != null" >
+        relationId = #{relationid,jdbcType=VARCHAR},
+      </if>
+      <if test="createuserid != null" >
+        createUserId = #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdatetime != null" >
+        createDateTime = #{createdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_sms_marketing_relation" >
+    update wl_sms_marketing_relation
+    set smsMarketingId = #{smsmarketingid,jdbcType=VARCHAR},
+      relationType = #{relationtype,jdbcType=VARCHAR},
+      relationId = #{relationid,jdbcType=VARCHAR},
+      createUserId = #{createuserid,jdbcType=VARCHAR},
+      createDateTime = #{createdatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_activity_luckyMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_activity_lucky" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="luckyType" property="luckytype" jdbcType="INTEGER" />
+    <result column="luckyCode" property="luckycode" jdbcType="VARCHAR" />
+    <result column="luckyName" property="luckyname" jdbcType="VARCHAR" />
+    <result column="luckyDesc" property="luckydesc" jdbcType="VARCHAR" />
+    <result column="luckyImage" property="luckyimage" jdbcType="VARCHAR" />
+    <result column="luckyBackImage" property="luckybackimage" jdbcType="VARCHAR" />
+    <result column="beginTime" property="begintime" jdbcType="TIMESTAMP" />
+    <result column="endTime" property="endtime" jdbcType="TIMESTAMP" />
+    <result column="repeatTips" property="repeattips" jdbcType="VARCHAR" />
+    <result column="probability" property="probability" jdbcType="INTEGER" />
+    <result column="countType" property="counttype" jdbcType="INTEGER" />
+    <result column="mostCount" property="mostcount" jdbcType="INTEGER" />
+    <result column="dayCount" property="daycount" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="createUserId" property="createuserid" jdbcType="VARCHAR" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="updateUserId" property="updateuserid" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, luckyType, luckyCode, luckyName, luckyDesc, luckyImage, luckyBackImage, beginTime, 
+    endTime, repeatTips, probability, countType, mostCount, dayCount, createTime, createUserId, 
+    updateTime, updateUserId, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_activity_lucky
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_activity_lucky
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_activity_lucky" >
+    insert into wl_activity_lucky (id, luckyType, luckyCode, 
+      luckyName, luckyDesc, luckyImage, 
+      luckyBackImage, beginTime, endTime, 
+      repeatTips, probability, countType, 
+      mostCount, dayCount, createTime, 
+      createUserId, updateTime, updateUserId, 
+      status)
+    values (#{id,jdbcType=VARCHAR}, #{luckytype,jdbcType=INTEGER}, #{luckycode,jdbcType=VARCHAR}, 
+      #{luckyname,jdbcType=VARCHAR}, #{luckydesc,jdbcType=VARCHAR}, #{luckyimage,jdbcType=VARCHAR}, 
+      #{luckybackimage,jdbcType=VARCHAR}, #{begintime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, 
+      #{repeattips,jdbcType=VARCHAR}, #{probability,jdbcType=INTEGER}, #{counttype,jdbcType=INTEGER}, 
+      #{mostcount,jdbcType=INTEGER}, #{daycount,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{createuserid,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, #{updateuserid,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_activity_lucky" >
+    insert into wl_activity_lucky
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="luckytype != null" >
+        luckyType,
+      </if>
+      <if test="luckycode != null" >
+        luckyCode,
+      </if>
+      <if test="luckyname != null" >
+        luckyName,
+      </if>
+      <if test="luckydesc != null" >
+        luckyDesc,
+      </if>
+      <if test="luckyimage != null" >
+        luckyImage,
+      </if>
+      <if test="luckybackimage != null" >
+        luckyBackImage,
+      </if>
+      <if test="begintime != null" >
+        beginTime,
+      </if>
+      <if test="endtime != null" >
+        endTime,
+      </if>
+      <if test="repeattips != null" >
+        repeatTips,
+      </if>
+      <if test="probability != null" >
+        probability,
+      </if>
+      <if test="counttype != null" >
+        countType,
+      </if>
+      <if test="mostcount != null" >
+        mostCount,
+      </if>
+      <if test="daycount != null" >
+        dayCount,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="createuserid != null" >
+        createUserId,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="luckytype != null" >
+        #{luckytype,jdbcType=INTEGER},
+      </if>
+      <if test="luckycode != null" >
+        #{luckycode,jdbcType=VARCHAR},
+      </if>
+      <if test="luckyname != null" >
+        #{luckyname,jdbcType=VARCHAR},
+      </if>
+      <if test="luckydesc != null" >
+        #{luckydesc,jdbcType=VARCHAR},
+      </if>
+      <if test="luckyimage != null" >
+        #{luckyimage,jdbcType=VARCHAR},
+      </if>
+      <if test="luckybackimage != null" >
+        #{luckybackimage,jdbcType=VARCHAR},
+      </if>
+      <if test="begintime != null" >
+        #{begintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="repeattips != null" >
+        #{repeattips,jdbcType=VARCHAR},
+      </if>
+      <if test="probability != null" >
+        #{probability,jdbcType=INTEGER},
+      </if>
+      <if test="counttype != null" >
+        #{counttype,jdbcType=INTEGER},
+      </if>
+      <if test="mostcount != null" >
+        #{mostcount,jdbcType=INTEGER},
+      </if>
+      <if test="daycount != null" >
+        #{daycount,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuserid != null" >
+        #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_activity_lucky" >
+    update wl_activity_lucky
+    <set >
+      <if test="luckytype != null" >
+        luckyType = #{luckytype,jdbcType=INTEGER},
+      </if>
+      <if test="luckycode != null" >
+        luckyCode = #{luckycode,jdbcType=VARCHAR},
+      </if>
+      <if test="luckyname != null" >
+        luckyName = #{luckyname,jdbcType=VARCHAR},
+      </if>
+      <if test="luckydesc != null" >
+        luckyDesc = #{luckydesc,jdbcType=VARCHAR},
+      </if>
+      <if test="luckyimage != null" >
+        luckyImage = #{luckyimage,jdbcType=VARCHAR},
+      </if>
+      <if test="luckybackimage != null" >
+        luckyBackImage = #{luckybackimage,jdbcType=VARCHAR},
+      </if>
+      <if test="begintime != null" >
+        beginTime = #{begintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        endTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="repeattips != null" >
+        repeatTips = #{repeattips,jdbcType=VARCHAR},
+      </if>
+      <if test="probability != null" >
+        probability = #{probability,jdbcType=INTEGER},
+      </if>
+      <if test="counttype != null" >
+        countType = #{counttype,jdbcType=INTEGER},
+      </if>
+      <if test="mostcount != null" >
+        mostCount = #{mostcount,jdbcType=INTEGER},
+      </if>
+      <if test="daycount != null" >
+        dayCount = #{daycount,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuserid != null" >
+        createUserId = #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_activity_lucky" >
+    update wl_activity_lucky
+    set luckyType = #{luckytype,jdbcType=INTEGER},
+      luckyCode = #{luckycode,jdbcType=VARCHAR},
+      luckyName = #{luckyname,jdbcType=VARCHAR},
+      luckyDesc = #{luckydesc,jdbcType=VARCHAR},
+      luckyImage = #{luckyimage,jdbcType=VARCHAR},
+      luckyBackImage = #{luckybackimage,jdbcType=VARCHAR},
+      beginTime = #{begintime,jdbcType=TIMESTAMP},
+      endTime = #{endtime,jdbcType=TIMESTAMP},
+      repeatTips = #{repeattips,jdbcType=VARCHAR},
+      probability = #{probability,jdbcType=INTEGER},
+      countType = #{counttype,jdbcType=INTEGER},
+      mostCount = #{mostcount,jdbcType=INTEGER},
+      dayCount = #{daycount,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      createUserId = #{createuserid,jdbcType=VARCHAR},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

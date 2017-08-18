@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_categoryMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_category" >
+    <id column="cateId" property="cateid" jdbcType="VARCHAR" />
+    <result column="cateName" property="catename" jdbcType="VARCHAR" />
+    <result column="parentId" property="parentid" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="categoryIcon" property="categoryicon" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="imagePc" property="imagepc" jdbcType="VARCHAR" />
+    <result column="channel" property="channel" jdbcType="VARCHAR" />
+    <result column="sortItem" property="sortitem" jdbcType="INTEGER" />
+    <result column="createUserId" property="createuserid" jdbcType="VARCHAR" />
+    <result column="createDateTime" property="createdatetime" jdbcType="TIMESTAMP" />
+    <result column="updateUserId" property="updateuserid" jdbcType="VARCHAR" />
+    <result column="updateDateTime" property="updatedatetime" jdbcType="TIMESTAMP" />
+    <result column="categoryCode" property="categorycode" jdbcType="VARCHAR" />
+    <result column="earlyWarningTime" property="earlywarningtime" jdbcType="INTEGER" />
+    <result column="recommend" property="recommend" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cateId, cateName, parentId, grade, createTime, categoryIcon, image, imagePc, channel, 
+    sortItem, createUserId, createDateTime, updateUserId, updateDateTime, categoryCode, 
+    earlyWarningTime, recommend
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_category
+    where cateId = #{cateid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_category
+    where cateId = #{cateid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_category" >
+    insert into wl_category (cateId, cateName, parentId, 
+      grade, createTime, categoryIcon, 
+      image, imagePc, channel, 
+      sortItem, createUserId, createDateTime, 
+      updateUserId, updateDateTime, categoryCode, 
+      earlyWarningTime, recommend)
+    values (#{cateid,jdbcType=VARCHAR}, #{catename,jdbcType=VARCHAR}, #{parentid,jdbcType=VARCHAR}, 
+      #{grade,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{categoryicon,jdbcType=VARCHAR}, 
+      #{image,jdbcType=VARCHAR}, #{imagepc,jdbcType=VARCHAR}, #{channel,jdbcType=VARCHAR}, 
+      #{sortitem,jdbcType=INTEGER}, #{createuserid,jdbcType=VARCHAR}, #{createdatetime,jdbcType=TIMESTAMP}, 
+      #{updateuserid,jdbcType=VARCHAR}, #{updatedatetime,jdbcType=TIMESTAMP}, #{categorycode,jdbcType=VARCHAR}, 
+      #{earlywarningtime,jdbcType=INTEGER}, #{recommend,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_category" >
+    insert into wl_category
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cateid != null" >
+        cateId,
+      </if>
+      <if test="catename != null" >
+        cateName,
+      </if>
+      <if test="parentid != null" >
+        parentId,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="categoryicon != null" >
+        categoryIcon,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="imagepc != null" >
+        imagePc,
+      </if>
+      <if test="channel != null" >
+        channel,
+      </if>
+      <if test="sortitem != null" >
+        sortItem,
+      </if>
+      <if test="createuserid != null" >
+        createUserId,
+      </if>
+      <if test="createdatetime != null" >
+        createDateTime,
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId,
+      </if>
+      <if test="updatedatetime != null" >
+        updateDateTime,
+      </if>
+      <if test="categorycode != null" >
+        categoryCode,
+      </if>
+      <if test="earlywarningtime != null" >
+        earlyWarningTime,
+      </if>
+      <if test="recommend != null" >
+        recommend,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cateid != null" >
+        #{cateid,jdbcType=VARCHAR},
+      </if>
+      <if test="catename != null" >
+        #{catename,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="categoryicon != null" >
+        #{categoryicon,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="imagepc != null" >
+        #{imagepc,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="sortitem != null" >
+        #{sortitem,jdbcType=INTEGER},
+      </if>
+      <if test="createuserid != null" >
+        #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdatetime != null" >
+        #{createdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedatetime != null" >
+        #{updatedatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="categorycode != null" >
+        #{categorycode,jdbcType=VARCHAR},
+      </if>
+      <if test="earlywarningtime != null" >
+        #{earlywarningtime,jdbcType=INTEGER},
+      </if>
+      <if test="recommend != null" >
+        #{recommend,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_category" >
+    update wl_category
+    <set >
+      <if test="catename != null" >
+        cateName = #{catename,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        parentId = #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="categoryicon != null" >
+        categoryIcon = #{categoryicon,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="imagepc != null" >
+        imagePc = #{imagepc,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        channel = #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="sortitem != null" >
+        sortItem = #{sortitem,jdbcType=INTEGER},
+      </if>
+      <if test="createuserid != null" >
+        createUserId = #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdatetime != null" >
+        createDateTime = #{createdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedatetime != null" >
+        updateDateTime = #{updatedatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="categorycode != null" >
+        categoryCode = #{categorycode,jdbcType=VARCHAR},
+      </if>
+      <if test="earlywarningtime != null" >
+        earlyWarningTime = #{earlywarningtime,jdbcType=INTEGER},
+      </if>
+      <if test="recommend != null" >
+        recommend = #{recommend,jdbcType=BIT},
+      </if>
+    </set>
+    where cateId = #{cateid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_category" >
+    update wl_category
+    set cateName = #{catename,jdbcType=VARCHAR},
+      parentId = #{parentid,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      categoryIcon = #{categoryicon,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      imagePc = #{imagepc,jdbcType=VARCHAR},
+      channel = #{channel,jdbcType=VARCHAR},
+      sortItem = #{sortitem,jdbcType=INTEGER},
+      createUserId = #{createuserid,jdbcType=VARCHAR},
+      createDateTime = #{createdatetime,jdbcType=TIMESTAMP},
+      updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      updateDateTime = #{updatedatetime,jdbcType=TIMESTAMP},
+      categoryCode = #{categorycode,jdbcType=VARCHAR},
+      earlyWarningTime = #{earlywarningtime,jdbcType=INTEGER},
+      recommend = #{recommend,jdbcType=BIT}
+    where cateId = #{cateid,jdbcType=VARCHAR}
+  </update>
+</mapper>

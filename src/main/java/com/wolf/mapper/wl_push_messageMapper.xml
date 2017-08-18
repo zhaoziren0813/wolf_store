@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_push_messageMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_push_message" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="msgType" property="msgtype" jdbcType="VARCHAR" />
+    <result column="msgJson" property="msgjson" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="readTime" property="readtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="readStatus" property="readstatus" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.wolf.pojo.wl_push_message" extends="BaseResultMap" >
+    <result column="userId" property="userid" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, msgType, msgJson, createTime, readTime, updateTime, readStatus, status
+  </sql>
+  <sql id="Blob_Column_List" >
+    userId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from wl_push_message
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_push_message
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_push_message" >
+    insert into wl_push_message (id, msgType, msgJson, 
+      createTime, readTime, updateTime, 
+      readStatus, status, userId
+      )
+    values (#{id,jdbcType=VARCHAR}, #{msgtype,jdbcType=VARCHAR}, #{msgjson,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{readtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{readstatus,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{userid,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_push_message" >
+    insert into wl_push_message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="msgtype != null" >
+        msgType,
+      </if>
+      <if test="msgjson != null" >
+        msgJson,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="readtime != null" >
+        readTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="readstatus != null" >
+        readStatus,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="msgtype != null" >
+        #{msgtype,jdbcType=VARCHAR},
+      </if>
+      <if test="msgjson != null" >
+        #{msgjson,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="readtime != null" >
+        #{readtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="readstatus != null" >
+        #{readstatus,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_push_message" >
+    update wl_push_message
+    <set >
+      <if test="msgtype != null" >
+        msgType = #{msgtype,jdbcType=VARCHAR},
+      </if>
+      <if test="msgjson != null" >
+        msgJson = #{msgjson,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="readtime != null" >
+        readTime = #{readtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="readstatus != null" >
+        readStatus = #{readstatus,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.wolf.pojo.wl_push_message" >
+    update wl_push_message
+    set msgType = #{msgtype,jdbcType=VARCHAR},
+      msgJson = #{msgjson,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      readTime = #{readtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      readStatus = #{readstatus,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      userId = #{userid,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_push_message" >
+    update wl_push_message
+    set msgType = #{msgtype,jdbcType=VARCHAR},
+      msgJson = #{msgjson,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      readTime = #{readtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      readStatus = #{readstatus,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

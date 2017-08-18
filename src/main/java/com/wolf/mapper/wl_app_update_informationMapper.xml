@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_app_update_informationMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_app_update_information" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="appName" property="appname" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+    <result column="isUpdate" property="isupdate" jdbcType="INTEGER" />
+    <result column="preUpdateVersion" property="preupdateversion" jdbcType="INTEGER" />
+    <result column="versionUpdateDescribes" property="versionupdatedescribes" jdbcType="VARCHAR" />
+    <result column="createUserId" property="createuserid" jdbcType="VARCHAR" />
+    <result column="createDateTime" property="createdatetime" jdbcType="TIMESTAMP" />
+    <result column="updateUserId" property="updateuserid" jdbcType="VARCHAR" />
+    <result column="updateDateTime" property="updatedatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, appName, url, version, isUpdate, preUpdateVersion, versionUpdateDescribes, createUserId, 
+    createDateTime, updateUserId, updateDateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_app_update_information
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_app_update_information
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_app_update_information" >
+    insert into wl_app_update_information (id, appName, url, 
+      version, isUpdate, preUpdateVersion, 
+      versionUpdateDescribes, createUserId, createDateTime, 
+      updateUserId, updateDateTime)
+    values (#{id,jdbcType=VARCHAR}, #{appname,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{version,jdbcType=INTEGER}, #{isupdate,jdbcType=INTEGER}, #{preupdateversion,jdbcType=INTEGER}, 
+      #{versionupdatedescribes,jdbcType=VARCHAR}, #{createuserid,jdbcType=VARCHAR}, #{createdatetime,jdbcType=TIMESTAMP}, 
+      #{updateuserid,jdbcType=VARCHAR}, #{updatedatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_app_update_information" >
+    insert into wl_app_update_information
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="appname != null" >
+        appName,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="isupdate != null" >
+        isUpdate,
+      </if>
+      <if test="preupdateversion != null" >
+        preUpdateVersion,
+      </if>
+      <if test="versionupdatedescribes != null" >
+        versionUpdateDescribes,
+      </if>
+      <if test="createuserid != null" >
+        createUserId,
+      </if>
+      <if test="createdatetime != null" >
+        createDateTime,
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId,
+      </if>
+      <if test="updatedatetime != null" >
+        updateDateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="appname != null" >
+        #{appname,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="isupdate != null" >
+        #{isupdate,jdbcType=INTEGER},
+      </if>
+      <if test="preupdateversion != null" >
+        #{preupdateversion,jdbcType=INTEGER},
+      </if>
+      <if test="versionupdatedescribes != null" >
+        #{versionupdatedescribes,jdbcType=VARCHAR},
+      </if>
+      <if test="createuserid != null" >
+        #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdatetime != null" >
+        #{createdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedatetime != null" >
+        #{updatedatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_app_update_information" >
+    update wl_app_update_information
+    <set >
+      <if test="appname != null" >
+        appName = #{appname,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="isupdate != null" >
+        isUpdate = #{isupdate,jdbcType=INTEGER},
+      </if>
+      <if test="preupdateversion != null" >
+        preUpdateVersion = #{preupdateversion,jdbcType=INTEGER},
+      </if>
+      <if test="versionupdatedescribes != null" >
+        versionUpdateDescribes = #{versionupdatedescribes,jdbcType=VARCHAR},
+      </if>
+      <if test="createuserid != null" >
+        createUserId = #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdatetime != null" >
+        createDateTime = #{createdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedatetime != null" >
+        updateDateTime = #{updatedatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_app_update_information" >
+    update wl_app_update_information
+    set appName = #{appname,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      version = #{version,jdbcType=INTEGER},
+      isUpdate = #{isupdate,jdbcType=INTEGER},
+      preUpdateVersion = #{preupdateversion,jdbcType=INTEGER},
+      versionUpdateDescribes = #{versionupdatedescribes,jdbcType=VARCHAR},
+      createUserId = #{createuserid,jdbcType=VARCHAR},
+      createDateTime = #{createdatetime,jdbcType=TIMESTAMP},
+      updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      updateDateTime = #{updatedatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

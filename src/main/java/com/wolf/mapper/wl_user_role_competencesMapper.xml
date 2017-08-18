@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_user_role_competencesMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_user_role_competences" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="roleId" property="roleid" jdbcType="VARCHAR" />
+    <result column="competenceId" property="competenceid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, roleId, competenceId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_user_role_competences
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_user_role_competences
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_user_role_competences" >
+    insert into wl_user_role_competences (id, roleId, competenceId
+      )
+    values (#{id,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR}, #{competenceid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_user_role_competences" >
+    insert into wl_user_role_competences
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="roleid != null" >
+        roleId,
+      </if>
+      <if test="competenceid != null" >
+        competenceId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null" >
+        #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="competenceid != null" >
+        #{competenceid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_user_role_competences" >
+    update wl_user_role_competences
+    <set >
+      <if test="roleid != null" >
+        roleId = #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="competenceid != null" >
+        competenceId = #{competenceid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_user_role_competences" >
+    update wl_user_role_competences
+    set roleId = #{roleid,jdbcType=VARCHAR},
+      competenceId = #{competenceid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

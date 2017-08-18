@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_group_buy_groupMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_group_buy_group" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="groupBuyId" property="groupbuyid" jdbcType="VARCHAR" />
+    <result column="groupBuytoken" property="groupbuytoken" jdbcType="VARCHAR" />
+    <result column="groupUserId" property="groupuserid" jdbcType="VARCHAR" />
+    <result column="groupBuyStatus" property="groupbuystatus" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, groupBuyId, groupBuytoken, groupUserId, groupBuyStatus, createTime, updateTime, 
+    status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_group_buy_group
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_group_buy_group
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_group_buy_group" >
+    insert into wl_group_buy_group (id, groupBuyId, groupBuytoken, 
+      groupUserId, groupBuyStatus, createTime, 
+      updateTime, status)
+    values (#{id,jdbcType=VARCHAR}, #{groupbuyid,jdbcType=VARCHAR}, #{groupbuytoken,jdbcType=VARCHAR}, 
+      #{groupuserid,jdbcType=VARCHAR}, #{groupbuystatus,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_group_buy_group" >
+    insert into wl_group_buy_group
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="groupbuyid != null" >
+        groupBuyId,
+      </if>
+      <if test="groupbuytoken != null" >
+        groupBuytoken,
+      </if>
+      <if test="groupuserid != null" >
+        groupUserId,
+      </if>
+      <if test="groupbuystatus != null" >
+        groupBuyStatus,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="groupbuyid != null" >
+        #{groupbuyid,jdbcType=VARCHAR},
+      </if>
+      <if test="groupbuytoken != null" >
+        #{groupbuytoken,jdbcType=VARCHAR},
+      </if>
+      <if test="groupuserid != null" >
+        #{groupuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="groupbuystatus != null" >
+        #{groupbuystatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_group_buy_group" >
+    update wl_group_buy_group
+    <set >
+      <if test="groupbuyid != null" >
+        groupBuyId = #{groupbuyid,jdbcType=VARCHAR},
+      </if>
+      <if test="groupbuytoken != null" >
+        groupBuytoken = #{groupbuytoken,jdbcType=VARCHAR},
+      </if>
+      <if test="groupuserid != null" >
+        groupUserId = #{groupuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="groupbuystatus != null" >
+        groupBuyStatus = #{groupbuystatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_group_buy_group" >
+    update wl_group_buy_group
+    set groupBuyId = #{groupbuyid,jdbcType=VARCHAR},
+      groupBuytoken = #{groupbuytoken,jdbcType=VARCHAR},
+      groupUserId = #{groupuserid,jdbcType=VARCHAR},
+      groupBuyStatus = #{groupbuystatus,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

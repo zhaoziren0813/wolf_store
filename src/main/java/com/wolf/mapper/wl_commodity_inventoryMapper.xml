@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_commodity_inventoryMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_commodity_inventory" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="property" property="property" jdbcType="VARCHAR" />
+    <result column="commodityId" property="commodityid" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="imageUrl" property="imageurl" jdbcType="VARCHAR" />
+    <result column="barcode" property="barcode" jdbcType="VARCHAR" />
+    <result column="inventoryCode" property="inventorycode" jdbcType="VARCHAR" />
+    <result column="weight" property="weight" jdbcType="INTEGER" />
+    <result column="logisticFee" property="logisticfee" jdbcType="INTEGER" />
+    <result column="packagingFee" property="packagingfee" jdbcType="INTEGER" />
+    <result column="purchasePrice" property="purchaseprice" jdbcType="INTEGER" />
+    <result column="expireTime" property="expiretime" jdbcType="DATE" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, property, commodityId, price, quantity, createTime, updateTime, status, imageUrl, 
+    barcode, inventoryCode, weight, logisticFee, packagingFee, purchasePrice, expireTime, 
+    remarks
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_commodity_inventory
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_commodity_inventory
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_commodity_inventory" >
+    insert into wl_commodity_inventory (id, property, commodityId, 
+      price, quantity, createTime, 
+      updateTime, status, imageUrl, 
+      barcode, inventoryCode, weight, 
+      logisticFee, packagingFee, purchasePrice, 
+      expireTime, remarks)
+    values (#{id,jdbcType=VARCHAR}, #{property,jdbcType=VARCHAR}, #{commodityid,jdbcType=VARCHAR}, 
+      #{price,jdbcType=INTEGER}, #{quantity,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{imageurl,jdbcType=VARCHAR}, 
+      #{barcode,jdbcType=VARCHAR}, #{inventorycode,jdbcType=VARCHAR}, #{weight,jdbcType=INTEGER}, 
+      #{logisticfee,jdbcType=INTEGER}, #{packagingfee,jdbcType=INTEGER}, #{purchaseprice,jdbcType=INTEGER}, 
+      #{expiretime,jdbcType=DATE}, #{remarks,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_commodity_inventory" >
+    insert into wl_commodity_inventory
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="property != null" >
+        property,
+      </if>
+      <if test="commodityid != null" >
+        commodityId,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="quantity != null" >
+        quantity,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="imageurl != null" >
+        imageUrl,
+      </if>
+      <if test="barcode != null" >
+        barcode,
+      </if>
+      <if test="inventorycode != null" >
+        inventoryCode,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="logisticfee != null" >
+        logisticFee,
+      </if>
+      <if test="packagingfee != null" >
+        packagingFee,
+      </if>
+      <if test="purchaseprice != null" >
+        purchasePrice,
+      </if>
+      <if test="expiretime != null" >
+        expireTime,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="property != null" >
+        #{property,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityid != null" >
+        #{commodityid,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="imageurl != null" >
+        #{imageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="inventorycode != null" >
+        #{inventorycode,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="logisticfee != null" >
+        #{logisticfee,jdbcType=INTEGER},
+      </if>
+      <if test="packagingfee != null" >
+        #{packagingfee,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseprice != null" >
+        #{purchaseprice,jdbcType=INTEGER},
+      </if>
+      <if test="expiretime != null" >
+        #{expiretime,jdbcType=DATE},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_commodity_inventory" >
+    update wl_commodity_inventory
+    <set >
+      <if test="property != null" >
+        property = #{property,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityid != null" >
+        commodityId = #{commodityid,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="imageurl != null" >
+        imageUrl = #{imageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        barcode = #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="inventorycode != null" >
+        inventoryCode = #{inventorycode,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="logisticfee != null" >
+        logisticFee = #{logisticfee,jdbcType=INTEGER},
+      </if>
+      <if test="packagingfee != null" >
+        packagingFee = #{packagingfee,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseprice != null" >
+        purchasePrice = #{purchaseprice,jdbcType=INTEGER},
+      </if>
+      <if test="expiretime != null" >
+        expireTime = #{expiretime,jdbcType=DATE},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_commodity_inventory" >
+    update wl_commodity_inventory
+    set property = #{property,jdbcType=VARCHAR},
+      commodityId = #{commodityid,jdbcType=VARCHAR},
+      price = #{price,jdbcType=INTEGER},
+      quantity = #{quantity,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      imageUrl = #{imageurl,jdbcType=VARCHAR},
+      barcode = #{barcode,jdbcType=VARCHAR},
+      inventoryCode = #{inventorycode,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=INTEGER},
+      logisticFee = #{logisticfee,jdbcType=INTEGER},
+      packagingFee = #{packagingfee,jdbcType=INTEGER},
+      purchasePrice = #{purchaseprice,jdbcType=INTEGER},
+      expireTime = #{expiretime,jdbcType=DATE},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

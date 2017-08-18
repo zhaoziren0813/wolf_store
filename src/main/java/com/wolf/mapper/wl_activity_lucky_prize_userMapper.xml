@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_activity_lucky_prize_userMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_activity_lucky_prize_user" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="luckyId" property="luckyid" jdbcType="VARCHAR" />
+    <result column="prizeId" property="prizeid" jdbcType="VARCHAR" />
+    <result column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="receiveStatus" property="receivestatus" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="createUserId" property="createuserid" jdbcType="VARCHAR" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="updateUserId" property="updateuserid" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, luckyId, prizeId, userId, phone, receiveStatus, createTime, createUserId, updateTime, 
+    updateUserId, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_activity_lucky_prize_user
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_activity_lucky_prize_user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_activity_lucky_prize_user" >
+    insert into wl_activity_lucky_prize_user (id, luckyId, prizeId, 
+      userId, phone, receiveStatus, 
+      createTime, createUserId, updateTime, 
+      updateUserId, status)
+    values (#{id,jdbcType=VARCHAR}, #{luckyid,jdbcType=VARCHAR}, #{prizeid,jdbcType=VARCHAR}, 
+      #{userid,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{receivestatus,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{createuserid,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{updateuserid,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_activity_lucky_prize_user" >
+    insert into wl_activity_lucky_prize_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="luckyid != null" >
+        luckyId,
+      </if>
+      <if test="prizeid != null" >
+        prizeId,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="receivestatus != null" >
+        receiveStatus,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="createuserid != null" >
+        createUserId,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="luckyid != null" >
+        #{luckyid,jdbcType=VARCHAR},
+      </if>
+      <if test="prizeid != null" >
+        #{prizeid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="receivestatus != null" >
+        #{receivestatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuserid != null" >
+        #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_activity_lucky_prize_user" >
+    update wl_activity_lucky_prize_user
+    <set >
+      <if test="luckyid != null" >
+        luckyId = #{luckyid,jdbcType=VARCHAR},
+      </if>
+      <if test="prizeid != null" >
+        prizeId = #{prizeid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="receivestatus != null" >
+        receiveStatus = #{receivestatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuserid != null" >
+        createUserId = #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_activity_lucky_prize_user" >
+    update wl_activity_lucky_prize_user
+    set luckyId = #{luckyid,jdbcType=VARCHAR},
+      prizeId = #{prizeid,jdbcType=VARCHAR},
+      userId = #{userid,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      receiveStatus = #{receivestatus,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      createUserId = #{createuserid,jdbcType=VARCHAR},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

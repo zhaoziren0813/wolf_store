@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_sys_dictionaryMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_sys_dictionary" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="categoryCode" property="categorycode" jdbcType="VARCHAR" />
+    <result column="categoryName" property="categoryname" jdbcType="VARCHAR" />
+    <result column="categoryDesc" property="categorydesc" jdbcType="VARCHAR" />
+    <result column="keyCode" property="keycode" jdbcType="VARCHAR" />
+    <result column="keyName" property="keyname" jdbcType="VARCHAR" />
+    <result column="keyDesc" property="keydesc" jdbcType="VARCHAR" />
+    <result column="keyIndex" property="keyindex" jdbcType="INTEGER" />
+    <result column="parentId" property="parentid" jdbcType="VARCHAR" />
+    <result column="createUserId" property="createuserid" jdbcType="VARCHAR" />
+    <result column="createDateTime" property="createdatetime" jdbcType="TIMESTAMP" />
+    <result column="updateUserId" property="updateuserid" jdbcType="VARCHAR" />
+    <result column="updateDateTime" property="updatedatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, categoryCode, categoryName, categoryDesc, keyCode, keyName, keyDesc, keyIndex, 
+    parentId, createUserId, createDateTime, updateUserId, updateDateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_sys_dictionary
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_sys_dictionary
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_sys_dictionary" >
+    insert into wl_sys_dictionary (id, categoryCode, categoryName, 
+      categoryDesc, keyCode, keyName, 
+      keyDesc, keyIndex, parentId, 
+      createUserId, createDateTime, updateUserId, 
+      updateDateTime)
+    values (#{id,jdbcType=VARCHAR}, #{categorycode,jdbcType=VARCHAR}, #{categoryname,jdbcType=VARCHAR}, 
+      #{categorydesc,jdbcType=VARCHAR}, #{keycode,jdbcType=VARCHAR}, #{keyname,jdbcType=VARCHAR}, 
+      #{keydesc,jdbcType=VARCHAR}, #{keyindex,jdbcType=INTEGER}, #{parentid,jdbcType=VARCHAR}, 
+      #{createuserid,jdbcType=VARCHAR}, #{createdatetime,jdbcType=TIMESTAMP}, #{updateuserid,jdbcType=VARCHAR}, 
+      #{updatedatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_sys_dictionary" >
+    insert into wl_sys_dictionary
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="categorycode != null" >
+        categoryCode,
+      </if>
+      <if test="categoryname != null" >
+        categoryName,
+      </if>
+      <if test="categorydesc != null" >
+        categoryDesc,
+      </if>
+      <if test="keycode != null" >
+        keyCode,
+      </if>
+      <if test="keyname != null" >
+        keyName,
+      </if>
+      <if test="keydesc != null" >
+        keyDesc,
+      </if>
+      <if test="keyindex != null" >
+        keyIndex,
+      </if>
+      <if test="parentid != null" >
+        parentId,
+      </if>
+      <if test="createuserid != null" >
+        createUserId,
+      </if>
+      <if test="createdatetime != null" >
+        createDateTime,
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId,
+      </if>
+      <if test="updatedatetime != null" >
+        updateDateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="categorycode != null" >
+        #{categorycode,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryname != null" >
+        #{categoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="categorydesc != null" >
+        #{categorydesc,jdbcType=VARCHAR},
+      </if>
+      <if test="keycode != null" >
+        #{keycode,jdbcType=VARCHAR},
+      </if>
+      <if test="keyname != null" >
+        #{keyname,jdbcType=VARCHAR},
+      </if>
+      <if test="keydesc != null" >
+        #{keydesc,jdbcType=VARCHAR},
+      </if>
+      <if test="keyindex != null" >
+        #{keyindex,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="createuserid != null" >
+        #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdatetime != null" >
+        #{createdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedatetime != null" >
+        #{updatedatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_sys_dictionary" >
+    update wl_sys_dictionary
+    <set >
+      <if test="categorycode != null" >
+        categoryCode = #{categorycode,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryname != null" >
+        categoryName = #{categoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="categorydesc != null" >
+        categoryDesc = #{categorydesc,jdbcType=VARCHAR},
+      </if>
+      <if test="keycode != null" >
+        keyCode = #{keycode,jdbcType=VARCHAR},
+      </if>
+      <if test="keyname != null" >
+        keyName = #{keyname,jdbcType=VARCHAR},
+      </if>
+      <if test="keydesc != null" >
+        keyDesc = #{keydesc,jdbcType=VARCHAR},
+      </if>
+      <if test="keyindex != null" >
+        keyIndex = #{keyindex,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null" >
+        parentId = #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="createuserid != null" >
+        createUserId = #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdatetime != null" >
+        createDateTime = #{createdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedatetime != null" >
+        updateDateTime = #{updatedatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_sys_dictionary" >
+    update wl_sys_dictionary
+    set categoryCode = #{categorycode,jdbcType=VARCHAR},
+      categoryName = #{categoryname,jdbcType=VARCHAR},
+      categoryDesc = #{categorydesc,jdbcType=VARCHAR},
+      keyCode = #{keycode,jdbcType=VARCHAR},
+      keyName = #{keyname,jdbcType=VARCHAR},
+      keyDesc = #{keydesc,jdbcType=VARCHAR},
+      keyIndex = #{keyindex,jdbcType=INTEGER},
+      parentId = #{parentid,jdbcType=VARCHAR},
+      createUserId = #{createuserid,jdbcType=VARCHAR},
+      createDateTime = #{createdatetime,jdbcType=TIMESTAMP},
+      updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      updateDateTime = #{updatedatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

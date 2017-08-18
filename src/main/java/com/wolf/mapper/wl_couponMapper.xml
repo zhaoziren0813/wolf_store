@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_couponMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_coupon" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="couponType" property="coupontype" jdbcType="CHAR" />
+    <result column="couponName" property="couponname" jdbcType="VARCHAR" />
+    <result column="couponCode" property="couponcode" jdbcType="VARCHAR" />
+    <result column="categoryId" property="categoryid" jdbcType="VARCHAR" />
+    <result column="fullMoney" property="fullmoney" jdbcType="INTEGER" />
+    <result column="discountMoney" property="discountmoney" jdbcType="INTEGER" />
+    <result column="discount" property="discount" jdbcType="INTEGER" />
+    <result column="minMoney" property="minmoney" jdbcType="INTEGER" />
+    <result column="maxMoney" property="maxmoney" jdbcType="INTEGER" />
+    <result column="startTime" property="starttime" jdbcType="DATE" />
+    <result column="expireTime" property="expiretime" jdbcType="DATE" />
+    <result column="expireStartTime" property="expirestarttime" jdbcType="DATE" />
+    <result column="expireDays" property="expiredays" jdbcType="INTEGER" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="imageUrl" property="imageurl" jdbcType="VARCHAR" />
+    <result column="grayImageUrl" property="grayimageurl" jdbcType="VARCHAR" />
+    <result column="couponCenter" property="couponcenter" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="createByCode" property="createbycode" jdbcType="VARCHAR" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="updateByCode" property="updatebycode" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, couponType, couponName, couponCode, categoryId, fullMoney, discountMoney, discount, 
+    minMoney, maxMoney, startTime, expireTime, expireStartTime, expireDays, quantity, 
+    imageUrl, grayImageUrl, couponCenter, createTime, createByCode, updateTime, updateByCode, 
+    status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_coupon
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_coupon
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_coupon" >
+    insert into wl_coupon (id, couponType, couponName, 
+      couponCode, categoryId, fullMoney, 
+      discountMoney, discount, minMoney, 
+      maxMoney, startTime, expireTime, 
+      expireStartTime, expireDays, quantity, 
+      imageUrl, grayImageUrl, couponCenter, 
+      createTime, createByCode, updateTime, 
+      updateByCode, status)
+    values (#{id,jdbcType=VARCHAR}, #{coupontype,jdbcType=CHAR}, #{couponname,jdbcType=VARCHAR}, 
+      #{couponcode,jdbcType=VARCHAR}, #{categoryid,jdbcType=VARCHAR}, #{fullmoney,jdbcType=INTEGER}, 
+      #{discountmoney,jdbcType=INTEGER}, #{discount,jdbcType=INTEGER}, #{minmoney,jdbcType=INTEGER}, 
+      #{maxmoney,jdbcType=INTEGER}, #{starttime,jdbcType=DATE}, #{expiretime,jdbcType=DATE}, 
+      #{expirestarttime,jdbcType=DATE}, #{expiredays,jdbcType=INTEGER}, #{quantity,jdbcType=INTEGER}, 
+      #{imageurl,jdbcType=VARCHAR}, #{grayimageurl,jdbcType=VARCHAR}, #{couponcenter,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{createbycode,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{updatebycode,jdbcType=VARCHAR}, #{status,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_coupon" >
+    insert into wl_coupon
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="coupontype != null" >
+        couponType,
+      </if>
+      <if test="couponname != null" >
+        couponName,
+      </if>
+      <if test="couponcode != null" >
+        couponCode,
+      </if>
+      <if test="categoryid != null" >
+        categoryId,
+      </if>
+      <if test="fullmoney != null" >
+        fullMoney,
+      </if>
+      <if test="discountmoney != null" >
+        discountMoney,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="minmoney != null" >
+        minMoney,
+      </if>
+      <if test="maxmoney != null" >
+        maxMoney,
+      </if>
+      <if test="starttime != null" >
+        startTime,
+      </if>
+      <if test="expiretime != null" >
+        expireTime,
+      </if>
+      <if test="expirestarttime != null" >
+        expireStartTime,
+      </if>
+      <if test="expiredays != null" >
+        expireDays,
+      </if>
+      <if test="quantity != null" >
+        quantity,
+      </if>
+      <if test="imageurl != null" >
+        imageUrl,
+      </if>
+      <if test="grayimageurl != null" >
+        grayImageUrl,
+      </if>
+      <if test="couponcenter != null" >
+        couponCenter,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="createbycode != null" >
+        createByCode,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="updatebycode != null" >
+        updateByCode,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="coupontype != null" >
+        #{coupontype,jdbcType=CHAR},
+      </if>
+      <if test="couponname != null" >
+        #{couponname,jdbcType=VARCHAR},
+      </if>
+      <if test="couponcode != null" >
+        #{couponcode,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryid != null" >
+        #{categoryid,jdbcType=VARCHAR},
+      </if>
+      <if test="fullmoney != null" >
+        #{fullmoney,jdbcType=INTEGER},
+      </if>
+      <if test="discountmoney != null" >
+        #{discountmoney,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="minmoney != null" >
+        #{minmoney,jdbcType=INTEGER},
+      </if>
+      <if test="maxmoney != null" >
+        #{maxmoney,jdbcType=INTEGER},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=DATE},
+      </if>
+      <if test="expiretime != null" >
+        #{expiretime,jdbcType=DATE},
+      </if>
+      <if test="expirestarttime != null" >
+        #{expirestarttime,jdbcType=DATE},
+      </if>
+      <if test="expiredays != null" >
+        #{expiredays,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="imageurl != null" >
+        #{imageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="grayimageurl != null" >
+        #{grayimageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="couponcenter != null" >
+        #{couponcenter,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createbycode != null" >
+        #{createbycode,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatebycode != null" >
+        #{updatebycode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_coupon" >
+    update wl_coupon
+    <set >
+      <if test="coupontype != null" >
+        couponType = #{coupontype,jdbcType=CHAR},
+      </if>
+      <if test="couponname != null" >
+        couponName = #{couponname,jdbcType=VARCHAR},
+      </if>
+      <if test="couponcode != null" >
+        couponCode = #{couponcode,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryid != null" >
+        categoryId = #{categoryid,jdbcType=VARCHAR},
+      </if>
+      <if test="fullmoney != null" >
+        fullMoney = #{fullmoney,jdbcType=INTEGER},
+      </if>
+      <if test="discountmoney != null" >
+        discountMoney = #{discountmoney,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="minmoney != null" >
+        minMoney = #{minmoney,jdbcType=INTEGER},
+      </if>
+      <if test="maxmoney != null" >
+        maxMoney = #{maxmoney,jdbcType=INTEGER},
+      </if>
+      <if test="starttime != null" >
+        startTime = #{starttime,jdbcType=DATE},
+      </if>
+      <if test="expiretime != null" >
+        expireTime = #{expiretime,jdbcType=DATE},
+      </if>
+      <if test="expirestarttime != null" >
+        expireStartTime = #{expirestarttime,jdbcType=DATE},
+      </if>
+      <if test="expiredays != null" >
+        expireDays = #{expiredays,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="imageurl != null" >
+        imageUrl = #{imageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="grayimageurl != null" >
+        grayImageUrl = #{grayimageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="couponcenter != null" >
+        couponCenter = #{couponcenter,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createbycode != null" >
+        createByCode = #{createbycode,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatebycode != null" >
+        updateByCode = #{updatebycode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_coupon" >
+    update wl_coupon
+    set couponType = #{coupontype,jdbcType=CHAR},
+      couponName = #{couponname,jdbcType=VARCHAR},
+      couponCode = #{couponcode,jdbcType=VARCHAR},
+      categoryId = #{categoryid,jdbcType=VARCHAR},
+      fullMoney = #{fullmoney,jdbcType=INTEGER},
+      discountMoney = #{discountmoney,jdbcType=INTEGER},
+      discount = #{discount,jdbcType=INTEGER},
+      minMoney = #{minmoney,jdbcType=INTEGER},
+      maxMoney = #{maxmoney,jdbcType=INTEGER},
+      startTime = #{starttime,jdbcType=DATE},
+      expireTime = #{expiretime,jdbcType=DATE},
+      expireStartTime = #{expirestarttime,jdbcType=DATE},
+      expireDays = #{expiredays,jdbcType=INTEGER},
+      quantity = #{quantity,jdbcType=INTEGER},
+      imageUrl = #{imageurl,jdbcType=VARCHAR},
+      grayImageUrl = #{grayimageurl,jdbcType=VARCHAR},
+      couponCenter = #{couponcenter,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      createByCode = #{createbycode,jdbcType=VARCHAR},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      updateByCode = #{updatebycode,jdbcType=VARCHAR},
+      status = #{status,jdbcType=CHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

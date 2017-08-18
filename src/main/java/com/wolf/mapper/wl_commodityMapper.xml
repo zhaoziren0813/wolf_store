@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_commodityMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_commodity" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="categoryId" property="categoryid" jdbcType="VARCHAR" />
+    <result column="commodityName" property="commodityname" jdbcType="VARCHAR" />
+    <result column="images" property="images" jdbcType="VARCHAR" />
+    <result column="property" property="property" jdbcType="VARCHAR" />
+    <result column="commodityImages" property="commodityimages" jdbcType="VARCHAR" />
+    <result column="oprice" property="oprice" jdbcType="INTEGER" />
+    <result column="cprice" property="cprice" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="msStatus" property="msstatus" jdbcType="INTEGER" />
+    <result column="likeCount" property="likecount" jdbcType="INTEGER" />
+    <result column="shareCount" property="sharecount" jdbcType="INTEGER" />
+    <result column="qrCode" property="qrcode" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="channel" property="channel" jdbcType="VARCHAR" />
+    <result column="commodityCode" property="commoditycode" jdbcType="VARCHAR" />
+    <result column="integral" property="integral" jdbcType="INTEGER" />
+    <result column="sales" property="sales" jdbcType="INTEGER" />
+    <result column="salesInitial" property="salesinitial" jdbcType="INTEGER" />
+    <result column="wareHouseName" property="warehousename" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="ebayUrl" property="ebayurl" jdbcType="VARCHAR" />
+    <result column="ebayPrice" property="ebayprice" jdbcType="INTEGER" />
+    <result column="ebayName" property="ebayname" jdbcType="VARCHAR" />
+    <result column="taobaoUrl" property="taobaourl" jdbcType="VARCHAR" />
+    <result column="taobaoPrice" property="taobaoprice" jdbcType="INTEGER" />
+    <result column="auditStatus" property="auditstatus" jdbcType="INTEGER" />
+    <result column="placeOrigin" property="placeorigin" jdbcType="VARCHAR" />
+    <result column="genericAttribute" property="genericattribute" jdbcType="VARCHAR" />
+    <result column="sellerId" property="sellerid" jdbcType="VARCHAR" />
+    <result column="deleteStatus" property="deletestatus" jdbcType="INTEGER" />
+    <result column="weight" property="weight" jdbcType="INTEGER" />
+    <result column="tmPrice" property="tmprice" jdbcType="INTEGER" />
+    <result column="jdPrice" property="jdprice" jdbcType="INTEGER" />
+    <result column="purchasePrice" property="purchaseprice" jdbcType="INTEGER" />
+    <result column="tbPrice" property="tbprice" jdbcType="INTEGER" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="brandName" property="brandname" jdbcType="VARCHAR" />
+    <result column="commodityNameBak" property="commoditynamebak" jdbcType="VARCHAR" />
+    <result column="testFlag" property="testflag" jdbcType="INTEGER" />
+    <result column="fgPrice" property="fgprice" jdbcType="INTEGER" />
+    <result column="category3" property="category3" jdbcType="VARCHAR" />
+    <result column="taobaoPriceUrl" property="taobaopriceurl" jdbcType="VARCHAR" />
+    <result column="jdPriceUrl" property="jdpriceurl" jdbcType="VARCHAR" />
+    <result column="tmallPriceUrl" property="tmallpriceurl" jdbcType="VARCHAR" />
+    <result column="benchmarkingPrice" property="benchmarkingprice" jdbcType="INTEGER" />
+    <result column="isProxy" property="isproxy" jdbcType="TINYINT" />
+    <result column="proxyCommission" property="proxycommission" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="recommendation" property="recommendation" jdbcType="BIT" />
+    <result column="isShare" property="isshare" jdbcType="TINYINT" />
+    <result column="shareCommission" property="sharecommission" jdbcType="INTEGER" />
+    <result column="shareRecommend" property="sharerecommend" jdbcType="TINYINT" />
+    <result column="countryShopId" property="countryshopid" jdbcType="VARCHAR" />
+    <result column="commodityName_pinyin" property="commoditynamePinyin" jdbcType="VARCHAR" />
+    <result column="masterCommission" property="mastercommission" jdbcType="INTEGER" />
+    <result column="autoPrice" property="autoprice" jdbcType="BIT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.wolf.pojo.wl_commodityWithBLOBs" extends="BaseResultMap" >
+    <result column="detail" property="detail" jdbcType="LONGVARCHAR" />
+    <result column="brand" property="brand" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, categoryId, commodityName, images, property, commodityImages, oprice, cprice, 
+    status, msStatus, likeCount, shareCount, qrCode, createTime, channel, commodityCode, 
+    integral, sales, salesInitial, wareHouseName, remark, ebayUrl, ebayPrice, ebayName, 
+    taobaoUrl, taobaoPrice, auditStatus, placeOrigin, genericAttribute, sellerId, deleteStatus, 
+    weight, tmPrice, jdPrice, purchasePrice, tbPrice, sort, brandName, commodityNameBak, 
+    testFlag, fgPrice, category3, taobaoPriceUrl, jdPriceUrl, tmallPriceUrl, benchmarkingPrice, 
+    isProxy, proxyCommission, description, recommendation, isShare, shareCommission, 
+    shareRecommend, countryShopId, commodityName_pinyin, masterCommission, autoPrice
+  </sql>
+  <sql id="Blob_Column_List" >
+    detail, brand
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from wl_commodity
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_commodity
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_commodityWithBLOBs" >
+    insert into wl_commodity (id, categoryId, commodityName, 
+      images, property, commodityImages, 
+      oprice, cprice, status, 
+      msStatus, likeCount, shareCount, 
+      qrCode, createTime, channel, 
+      commodityCode, integral, sales, 
+      salesInitial, wareHouseName, remark, 
+      ebayUrl, ebayPrice, ebayName, 
+      taobaoUrl, taobaoPrice, auditStatus, 
+      placeOrigin, genericAttribute, sellerId, 
+      deleteStatus, weight, tmPrice, 
+      jdPrice, purchasePrice, tbPrice, 
+      sort, brandName, commodityNameBak, 
+      testFlag, fgPrice, category3, 
+      taobaoPriceUrl, jdPriceUrl, tmallPriceUrl, 
+      benchmarkingPrice, isProxy, proxyCommission, 
+      description, recommendation, isShare, 
+      shareCommission, shareRecommend, countryShopId, 
+      commodityName_pinyin, masterCommission, 
+      autoPrice, detail, brand
+      )
+    values (#{id,jdbcType=VARCHAR}, #{categoryid,jdbcType=VARCHAR}, #{commodityname,jdbcType=VARCHAR}, 
+      #{images,jdbcType=VARCHAR}, #{property,jdbcType=VARCHAR}, #{commodityimages,jdbcType=VARCHAR}, 
+      #{oprice,jdbcType=INTEGER}, #{cprice,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{msstatus,jdbcType=INTEGER}, #{likecount,jdbcType=INTEGER}, #{sharecount,jdbcType=INTEGER}, 
+      #{qrcode,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{channel,jdbcType=VARCHAR}, 
+      #{commoditycode,jdbcType=VARCHAR}, #{integral,jdbcType=INTEGER}, #{sales,jdbcType=INTEGER}, 
+      #{salesinitial,jdbcType=INTEGER}, #{warehousename,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{ebayurl,jdbcType=VARCHAR}, #{ebayprice,jdbcType=INTEGER}, #{ebayname,jdbcType=VARCHAR}, 
+      #{taobaourl,jdbcType=VARCHAR}, #{taobaoprice,jdbcType=INTEGER}, #{auditstatus,jdbcType=INTEGER}, 
+      #{placeorigin,jdbcType=VARCHAR}, #{genericattribute,jdbcType=VARCHAR}, #{sellerid,jdbcType=VARCHAR}, 
+      #{deletestatus,jdbcType=INTEGER}, #{weight,jdbcType=INTEGER}, #{tmprice,jdbcType=INTEGER}, 
+      #{jdprice,jdbcType=INTEGER}, #{purchaseprice,jdbcType=INTEGER}, #{tbprice,jdbcType=INTEGER}, 
+      #{sort,jdbcType=INTEGER}, #{brandname,jdbcType=VARCHAR}, #{commoditynamebak,jdbcType=VARCHAR}, 
+      #{testflag,jdbcType=INTEGER}, #{fgprice,jdbcType=INTEGER}, #{category3,jdbcType=VARCHAR}, 
+      #{taobaopriceurl,jdbcType=VARCHAR}, #{jdpriceurl,jdbcType=VARCHAR}, #{tmallpriceurl,jdbcType=VARCHAR}, 
+      #{benchmarkingprice,jdbcType=INTEGER}, #{isproxy,jdbcType=TINYINT}, #{proxycommission,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR}, #{recommendation,jdbcType=BIT}, #{isshare,jdbcType=TINYINT}, 
+      #{sharecommission,jdbcType=INTEGER}, #{sharerecommend,jdbcType=TINYINT}, #{countryshopid,jdbcType=VARCHAR}, 
+      #{commoditynamePinyin,jdbcType=VARCHAR}, #{mastercommission,jdbcType=INTEGER}, 
+      #{autoprice,jdbcType=BIT}, #{detail,jdbcType=LONGVARCHAR}, #{brand,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_commodityWithBLOBs" >
+    insert into wl_commodity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="categoryid != null" >
+        categoryId,
+      </if>
+      <if test="commodityname != null" >
+        commodityName,
+      </if>
+      <if test="images != null" >
+        images,
+      </if>
+      <if test="property != null" >
+        property,
+      </if>
+      <if test="commodityimages != null" >
+        commodityImages,
+      </if>
+      <if test="oprice != null" >
+        oprice,
+      </if>
+      <if test="cprice != null" >
+        cprice,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="msstatus != null" >
+        msStatus,
+      </if>
+      <if test="likecount != null" >
+        likeCount,
+      </if>
+      <if test="sharecount != null" >
+        shareCount,
+      </if>
+      <if test="qrcode != null" >
+        qrCode,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="channel != null" >
+        channel,
+      </if>
+      <if test="commoditycode != null" >
+        commodityCode,
+      </if>
+      <if test="integral != null" >
+        integral,
+      </if>
+      <if test="sales != null" >
+        sales,
+      </if>
+      <if test="salesinitial != null" >
+        salesInitial,
+      </if>
+      <if test="warehousename != null" >
+        wareHouseName,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="ebayurl != null" >
+        ebayUrl,
+      </if>
+      <if test="ebayprice != null" >
+        ebayPrice,
+      </if>
+      <if test="ebayname != null" >
+        ebayName,
+      </if>
+      <if test="taobaourl != null" >
+        taobaoUrl,
+      </if>
+      <if test="taobaoprice != null" >
+        taobaoPrice,
+      </if>
+      <if test="auditstatus != null" >
+        auditStatus,
+      </if>
+      <if test="placeorigin != null" >
+        placeOrigin,
+      </if>
+      <if test="genericattribute != null" >
+        genericAttribute,
+      </if>
+      <if test="sellerid != null" >
+        sellerId,
+      </if>
+      <if test="deletestatus != null" >
+        deleteStatus,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="tmprice != null" >
+        tmPrice,
+      </if>
+      <if test="jdprice != null" >
+        jdPrice,
+      </if>
+      <if test="purchaseprice != null" >
+        purchasePrice,
+      </if>
+      <if test="tbprice != null" >
+        tbPrice,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="brandname != null" >
+        brandName,
+      </if>
+      <if test="commoditynamebak != null" >
+        commodityNameBak,
+      </if>
+      <if test="testflag != null" >
+        testFlag,
+      </if>
+      <if test="fgprice != null" >
+        fgPrice,
+      </if>
+      <if test="category3 != null" >
+        category3,
+      </if>
+      <if test="taobaopriceurl != null" >
+        taobaoPriceUrl,
+      </if>
+      <if test="jdpriceurl != null" >
+        jdPriceUrl,
+      </if>
+      <if test="tmallpriceurl != null" >
+        tmallPriceUrl,
+      </if>
+      <if test="benchmarkingprice != null" >
+        benchmarkingPrice,
+      </if>
+      <if test="isproxy != null" >
+        isProxy,
+      </if>
+      <if test="proxycommission != null" >
+        proxyCommission,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="recommendation != null" >
+        recommendation,
+      </if>
+      <if test="isshare != null" >
+        isShare,
+      </if>
+      <if test="sharecommission != null" >
+        shareCommission,
+      </if>
+      <if test="sharerecommend != null" >
+        shareRecommend,
+      </if>
+      <if test="countryshopid != null" >
+        countryShopId,
+      </if>
+      <if test="commoditynamePinyin != null" >
+        commodityName_pinyin,
+      </if>
+      <if test="mastercommission != null" >
+        masterCommission,
+      </if>
+      <if test="autoprice != null" >
+        autoPrice,
+      </if>
+      <if test="detail != null" >
+        detail,
+      </if>
+      <if test="brand != null" >
+        brand,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryid != null" >
+        #{categoryid,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityname != null" >
+        #{commodityname,jdbcType=VARCHAR},
+      </if>
+      <if test="images != null" >
+        #{images,jdbcType=VARCHAR},
+      </if>
+      <if test="property != null" >
+        #{property,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityimages != null" >
+        #{commodityimages,jdbcType=VARCHAR},
+      </if>
+      <if test="oprice != null" >
+        #{oprice,jdbcType=INTEGER},
+      </if>
+      <if test="cprice != null" >
+        #{cprice,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="msstatus != null" >
+        #{msstatus,jdbcType=INTEGER},
+      </if>
+      <if test="likecount != null" >
+        #{likecount,jdbcType=INTEGER},
+      </if>
+      <if test="sharecount != null" >
+        #{sharecount,jdbcType=INTEGER},
+      </if>
+      <if test="qrcode != null" >
+        #{qrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="channel != null" >
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="commoditycode != null" >
+        #{commoditycode,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null" >
+        #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="sales != null" >
+        #{sales,jdbcType=INTEGER},
+      </if>
+      <if test="salesinitial != null" >
+        #{salesinitial,jdbcType=INTEGER},
+      </if>
+      <if test="warehousename != null" >
+        #{warehousename,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="ebayurl != null" >
+        #{ebayurl,jdbcType=VARCHAR},
+      </if>
+      <if test="ebayprice != null" >
+        #{ebayprice,jdbcType=INTEGER},
+      </if>
+      <if test="ebayname != null" >
+        #{ebayname,jdbcType=VARCHAR},
+      </if>
+      <if test="taobaourl != null" >
+        #{taobaourl,jdbcType=VARCHAR},
+      </if>
+      <if test="taobaoprice != null" >
+        #{taobaoprice,jdbcType=INTEGER},
+      </if>
+      <if test="auditstatus != null" >
+        #{auditstatus,jdbcType=INTEGER},
+      </if>
+      <if test="placeorigin != null" >
+        #{placeorigin,jdbcType=VARCHAR},
+      </if>
+      <if test="genericattribute != null" >
+        #{genericattribute,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerid != null" >
+        #{sellerid,jdbcType=VARCHAR},
+      </if>
+      <if test="deletestatus != null" >
+        #{deletestatus,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="tmprice != null" >
+        #{tmprice,jdbcType=INTEGER},
+      </if>
+      <if test="jdprice != null" >
+        #{jdprice,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseprice != null" >
+        #{purchaseprice,jdbcType=INTEGER},
+      </if>
+      <if test="tbprice != null" >
+        #{tbprice,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="brandname != null" >
+        #{brandname,jdbcType=VARCHAR},
+      </if>
+      <if test="commoditynamebak != null" >
+        #{commoditynamebak,jdbcType=VARCHAR},
+      </if>
+      <if test="testflag != null" >
+        #{testflag,jdbcType=INTEGER},
+      </if>
+      <if test="fgprice != null" >
+        #{fgprice,jdbcType=INTEGER},
+      </if>
+      <if test="category3 != null" >
+        #{category3,jdbcType=VARCHAR},
+      </if>
+      <if test="taobaopriceurl != null" >
+        #{taobaopriceurl,jdbcType=VARCHAR},
+      </if>
+      <if test="jdpriceurl != null" >
+        #{jdpriceurl,jdbcType=VARCHAR},
+      </if>
+      <if test="tmallpriceurl != null" >
+        #{tmallpriceurl,jdbcType=VARCHAR},
+      </if>
+      <if test="benchmarkingprice != null" >
+        #{benchmarkingprice,jdbcType=INTEGER},
+      </if>
+      <if test="isproxy != null" >
+        #{isproxy,jdbcType=TINYINT},
+      </if>
+      <if test="proxycommission != null" >
+        #{proxycommission,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="recommendation != null" >
+        #{recommendation,jdbcType=BIT},
+      </if>
+      <if test="isshare != null" >
+        #{isshare,jdbcType=TINYINT},
+      </if>
+      <if test="sharecommission != null" >
+        #{sharecommission,jdbcType=INTEGER},
+      </if>
+      <if test="sharerecommend != null" >
+        #{sharerecommend,jdbcType=TINYINT},
+      </if>
+      <if test="countryshopid != null" >
+        #{countryshopid,jdbcType=VARCHAR},
+      </if>
+      <if test="commoditynamePinyin != null" >
+        #{commoditynamePinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="mastercommission != null" >
+        #{mastercommission,jdbcType=INTEGER},
+      </if>
+      <if test="autoprice != null" >
+        #{autoprice,jdbcType=BIT},
+      </if>
+      <if test="detail != null" >
+        #{detail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="brand != null" >
+        #{brand,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_commodityWithBLOBs" >
+    update wl_commodity
+    <set >
+      <if test="categoryid != null" >
+        categoryId = #{categoryid,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityname != null" >
+        commodityName = #{commodityname,jdbcType=VARCHAR},
+      </if>
+      <if test="images != null" >
+        images = #{images,jdbcType=VARCHAR},
+      </if>
+      <if test="property != null" >
+        property = #{property,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityimages != null" >
+        commodityImages = #{commodityimages,jdbcType=VARCHAR},
+      </if>
+      <if test="oprice != null" >
+        oprice = #{oprice,jdbcType=INTEGER},
+      </if>
+      <if test="cprice != null" >
+        cprice = #{cprice,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="msstatus != null" >
+        msStatus = #{msstatus,jdbcType=INTEGER},
+      </if>
+      <if test="likecount != null" >
+        likeCount = #{likecount,jdbcType=INTEGER},
+      </if>
+      <if test="sharecount != null" >
+        shareCount = #{sharecount,jdbcType=INTEGER},
+      </if>
+      <if test="qrcode != null" >
+        qrCode = #{qrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="channel != null" >
+        channel = #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="commoditycode != null" >
+        commodityCode = #{commoditycode,jdbcType=VARCHAR},
+      </if>
+      <if test="integral != null" >
+        integral = #{integral,jdbcType=INTEGER},
+      </if>
+      <if test="sales != null" >
+        sales = #{sales,jdbcType=INTEGER},
+      </if>
+      <if test="salesinitial != null" >
+        salesInitial = #{salesinitial,jdbcType=INTEGER},
+      </if>
+      <if test="warehousename != null" >
+        wareHouseName = #{warehousename,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="ebayurl != null" >
+        ebayUrl = #{ebayurl,jdbcType=VARCHAR},
+      </if>
+      <if test="ebayprice != null" >
+        ebayPrice = #{ebayprice,jdbcType=INTEGER},
+      </if>
+      <if test="ebayname != null" >
+        ebayName = #{ebayname,jdbcType=VARCHAR},
+      </if>
+      <if test="taobaourl != null" >
+        taobaoUrl = #{taobaourl,jdbcType=VARCHAR},
+      </if>
+      <if test="taobaoprice != null" >
+        taobaoPrice = #{taobaoprice,jdbcType=INTEGER},
+      </if>
+      <if test="auditstatus != null" >
+        auditStatus = #{auditstatus,jdbcType=INTEGER},
+      </if>
+      <if test="placeorigin != null" >
+        placeOrigin = #{placeorigin,jdbcType=VARCHAR},
+      </if>
+      <if test="genericattribute != null" >
+        genericAttribute = #{genericattribute,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerid != null" >
+        sellerId = #{sellerid,jdbcType=VARCHAR},
+      </if>
+      <if test="deletestatus != null" >
+        deleteStatus = #{deletestatus,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="tmprice != null" >
+        tmPrice = #{tmprice,jdbcType=INTEGER},
+      </if>
+      <if test="jdprice != null" >
+        jdPrice = #{jdprice,jdbcType=INTEGER},
+      </if>
+      <if test="purchaseprice != null" >
+        purchasePrice = #{purchaseprice,jdbcType=INTEGER},
+      </if>
+      <if test="tbprice != null" >
+        tbPrice = #{tbprice,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="brandname != null" >
+        brandName = #{brandname,jdbcType=VARCHAR},
+      </if>
+      <if test="commoditynamebak != null" >
+        commodityNameBak = #{commoditynamebak,jdbcType=VARCHAR},
+      </if>
+      <if test="testflag != null" >
+        testFlag = #{testflag,jdbcType=INTEGER},
+      </if>
+      <if test="fgprice != null" >
+        fgPrice = #{fgprice,jdbcType=INTEGER},
+      </if>
+      <if test="category3 != null" >
+        category3 = #{category3,jdbcType=VARCHAR},
+      </if>
+      <if test="taobaopriceurl != null" >
+        taobaoPriceUrl = #{taobaopriceurl,jdbcType=VARCHAR},
+      </if>
+      <if test="jdpriceurl != null" >
+        jdPriceUrl = #{jdpriceurl,jdbcType=VARCHAR},
+      </if>
+      <if test="tmallpriceurl != null" >
+        tmallPriceUrl = #{tmallpriceurl,jdbcType=VARCHAR},
+      </if>
+      <if test="benchmarkingprice != null" >
+        benchmarkingPrice = #{benchmarkingprice,jdbcType=INTEGER},
+      </if>
+      <if test="isproxy != null" >
+        isProxy = #{isproxy,jdbcType=TINYINT},
+      </if>
+      <if test="proxycommission != null" >
+        proxyCommission = #{proxycommission,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="recommendation != null" >
+        recommendation = #{recommendation,jdbcType=BIT},
+      </if>
+      <if test="isshare != null" >
+        isShare = #{isshare,jdbcType=TINYINT},
+      </if>
+      <if test="sharecommission != null" >
+        shareCommission = #{sharecommission,jdbcType=INTEGER},
+      </if>
+      <if test="sharerecommend != null" >
+        shareRecommend = #{sharerecommend,jdbcType=TINYINT},
+      </if>
+      <if test="countryshopid != null" >
+        countryShopId = #{countryshopid,jdbcType=VARCHAR},
+      </if>
+      <if test="commoditynamePinyin != null" >
+        commodityName_pinyin = #{commoditynamePinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="mastercommission != null" >
+        masterCommission = #{mastercommission,jdbcType=INTEGER},
+      </if>
+      <if test="autoprice != null" >
+        autoPrice = #{autoprice,jdbcType=BIT},
+      </if>
+      <if test="detail != null" >
+        detail = #{detail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="brand != null" >
+        brand = #{brand,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.wolf.pojo.wl_commodityWithBLOBs" >
+    update wl_commodity
+    set categoryId = #{categoryid,jdbcType=VARCHAR},
+      commodityName = #{commodityname,jdbcType=VARCHAR},
+      images = #{images,jdbcType=VARCHAR},
+      property = #{property,jdbcType=VARCHAR},
+      commodityImages = #{commodityimages,jdbcType=VARCHAR},
+      oprice = #{oprice,jdbcType=INTEGER},
+      cprice = #{cprice,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      msStatus = #{msstatus,jdbcType=INTEGER},
+      likeCount = #{likecount,jdbcType=INTEGER},
+      shareCount = #{sharecount,jdbcType=INTEGER},
+      qrCode = #{qrcode,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      channel = #{channel,jdbcType=VARCHAR},
+      commodityCode = #{commoditycode,jdbcType=VARCHAR},
+      integral = #{integral,jdbcType=INTEGER},
+      sales = #{sales,jdbcType=INTEGER},
+      salesInitial = #{salesinitial,jdbcType=INTEGER},
+      wareHouseName = #{warehousename,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      ebayUrl = #{ebayurl,jdbcType=VARCHAR},
+      ebayPrice = #{ebayprice,jdbcType=INTEGER},
+      ebayName = #{ebayname,jdbcType=VARCHAR},
+      taobaoUrl = #{taobaourl,jdbcType=VARCHAR},
+      taobaoPrice = #{taobaoprice,jdbcType=INTEGER},
+      auditStatus = #{auditstatus,jdbcType=INTEGER},
+      placeOrigin = #{placeorigin,jdbcType=VARCHAR},
+      genericAttribute = #{genericattribute,jdbcType=VARCHAR},
+      sellerId = #{sellerid,jdbcType=VARCHAR},
+      deleteStatus = #{deletestatus,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=INTEGER},
+      tmPrice = #{tmprice,jdbcType=INTEGER},
+      jdPrice = #{jdprice,jdbcType=INTEGER},
+      purchasePrice = #{purchaseprice,jdbcType=INTEGER},
+      tbPrice = #{tbprice,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=INTEGER},
+      brandName = #{brandname,jdbcType=VARCHAR},
+      commodityNameBak = #{commoditynamebak,jdbcType=VARCHAR},
+      testFlag = #{testflag,jdbcType=INTEGER},
+      fgPrice = #{fgprice,jdbcType=INTEGER},
+      category3 = #{category3,jdbcType=VARCHAR},
+      taobaoPriceUrl = #{taobaopriceurl,jdbcType=VARCHAR},
+      jdPriceUrl = #{jdpriceurl,jdbcType=VARCHAR},
+      tmallPriceUrl = #{tmallpriceurl,jdbcType=VARCHAR},
+      benchmarkingPrice = #{benchmarkingprice,jdbcType=INTEGER},
+      isProxy = #{isproxy,jdbcType=TINYINT},
+      proxyCommission = #{proxycommission,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      recommendation = #{recommendation,jdbcType=BIT},
+      isShare = #{isshare,jdbcType=TINYINT},
+      shareCommission = #{sharecommission,jdbcType=INTEGER},
+      shareRecommend = #{sharerecommend,jdbcType=TINYINT},
+      countryShopId = #{countryshopid,jdbcType=VARCHAR},
+      commodityName_pinyin = #{commoditynamePinyin,jdbcType=VARCHAR},
+      masterCommission = #{mastercommission,jdbcType=INTEGER},
+      autoPrice = #{autoprice,jdbcType=BIT},
+      detail = #{detail,jdbcType=LONGVARCHAR},
+      brand = #{brand,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_commodity" >
+    update wl_commodity
+    set categoryId = #{categoryid,jdbcType=VARCHAR},
+      commodityName = #{commodityname,jdbcType=VARCHAR},
+      images = #{images,jdbcType=VARCHAR},
+      property = #{property,jdbcType=VARCHAR},
+      commodityImages = #{commodityimages,jdbcType=VARCHAR},
+      oprice = #{oprice,jdbcType=INTEGER},
+      cprice = #{cprice,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      msStatus = #{msstatus,jdbcType=INTEGER},
+      likeCount = #{likecount,jdbcType=INTEGER},
+      shareCount = #{sharecount,jdbcType=INTEGER},
+      qrCode = #{qrcode,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      channel = #{channel,jdbcType=VARCHAR},
+      commodityCode = #{commoditycode,jdbcType=VARCHAR},
+      integral = #{integral,jdbcType=INTEGER},
+      sales = #{sales,jdbcType=INTEGER},
+      salesInitial = #{salesinitial,jdbcType=INTEGER},
+      wareHouseName = #{warehousename,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      ebayUrl = #{ebayurl,jdbcType=VARCHAR},
+      ebayPrice = #{ebayprice,jdbcType=INTEGER},
+      ebayName = #{ebayname,jdbcType=VARCHAR},
+      taobaoUrl = #{taobaourl,jdbcType=VARCHAR},
+      taobaoPrice = #{taobaoprice,jdbcType=INTEGER},
+      auditStatus = #{auditstatus,jdbcType=INTEGER},
+      placeOrigin = #{placeorigin,jdbcType=VARCHAR},
+      genericAttribute = #{genericattribute,jdbcType=VARCHAR},
+      sellerId = #{sellerid,jdbcType=VARCHAR},
+      deleteStatus = #{deletestatus,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=INTEGER},
+      tmPrice = #{tmprice,jdbcType=INTEGER},
+      jdPrice = #{jdprice,jdbcType=INTEGER},
+      purchasePrice = #{purchaseprice,jdbcType=INTEGER},
+      tbPrice = #{tbprice,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=INTEGER},
+      brandName = #{brandname,jdbcType=VARCHAR},
+      commodityNameBak = #{commoditynamebak,jdbcType=VARCHAR},
+      testFlag = #{testflag,jdbcType=INTEGER},
+      fgPrice = #{fgprice,jdbcType=INTEGER},
+      category3 = #{category3,jdbcType=VARCHAR},
+      taobaoPriceUrl = #{taobaopriceurl,jdbcType=VARCHAR},
+      jdPriceUrl = #{jdpriceurl,jdbcType=VARCHAR},
+      tmallPriceUrl = #{tmallpriceurl,jdbcType=VARCHAR},
+      benchmarkingPrice = #{benchmarkingprice,jdbcType=INTEGER},
+      isProxy = #{isproxy,jdbcType=TINYINT},
+      proxyCommission = #{proxycommission,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      recommendation = #{recommendation,jdbcType=BIT},
+      isShare = #{isshare,jdbcType=TINYINT},
+      shareCommission = #{sharecommission,jdbcType=INTEGER},
+      shareRecommend = #{sharerecommend,jdbcType=TINYINT},
+      countryShopId = #{countryshopid,jdbcType=VARCHAR},
+      commodityName_pinyin = #{commoditynamePinyin,jdbcType=VARCHAR},
+      masterCommission = #{mastercommission,jdbcType=INTEGER},
+      autoPrice = #{autoprice,jdbcType=BIT}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

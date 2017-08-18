@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_bannerMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_banner" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="subjectId" property="subjectid" jdbcType="VARCHAR" />
+    <result column="bannerName" property="bannername" jdbcType="VARCHAR" />
+    <result column="bannerImage" property="bannerimage" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="channel" property="channel" jdbcType="VARCHAR" />
+    <result column="index" property="index" jdbcType="INTEGER" />
+    <result column="beginTime" property="begintime" jdbcType="TIMESTAMP" />
+    <result column="endTime" property="endtime" jdbcType="TIMESTAMP" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, subjectId, bannerName, bannerImage, url, channel, index, beginTime, endTime, 
+    createTime, status, type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_banner
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_banner
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_banner" >
+    insert into wl_banner (id, subjectId, bannerName, 
+      bannerImage, url, channel, 
+      index, beginTime, endTime, 
+      createTime, status, type
+      )
+    values (#{id,jdbcType=VARCHAR}, #{subjectid,jdbcType=VARCHAR}, #{bannername,jdbcType=VARCHAR}, 
+      #{bannerimage,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{channel,jdbcType=VARCHAR}, 
+      #{index,jdbcType=INTEGER}, #{begintime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT}, #{type,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_banner" >
+    insert into wl_banner
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="subjectid != null" >
+        subjectId,
+      </if>
+      <if test="bannername != null" >
+        bannerName,
+      </if>
+      <if test="bannerimage != null" >
+        bannerImage,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="channel != null" >
+        channel,
+      </if>
+      <if test="index != null" >
+        index,
+      </if>
+      <if test="begintime != null" >
+        beginTime,
+      </if>
+      <if test="endtime != null" >
+        endTime,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectid != null" >
+        #{subjectid,jdbcType=VARCHAR},
+      </if>
+      <if test="bannername != null" >
+        #{bannername,jdbcType=VARCHAR},
+      </if>
+      <if test="bannerimage != null" >
+        #{bannerimage,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="index != null" >
+        #{index,jdbcType=INTEGER},
+      </if>
+      <if test="begintime != null" >
+        #{begintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_banner" >
+    update wl_banner
+    <set >
+      <if test="subjectid != null" >
+        subjectId = #{subjectid,jdbcType=VARCHAR},
+      </if>
+      <if test="bannername != null" >
+        bannerName = #{bannername,jdbcType=VARCHAR},
+      </if>
+      <if test="bannerimage != null" >
+        bannerImage = #{bannerimage,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        channel = #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="index != null" >
+        index = #{index,jdbcType=INTEGER},
+      </if>
+      <if test="begintime != null" >
+        beginTime = #{begintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        endTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_banner" >
+    update wl_banner
+    set subjectId = #{subjectid,jdbcType=VARCHAR},
+      bannerName = #{bannername,jdbcType=VARCHAR},
+      bannerImage = #{bannerimage,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      channel = #{channel,jdbcType=VARCHAR},
+      index = #{index,jdbcType=INTEGER},
+      beginTime = #{begintime,jdbcType=TIMESTAMP},
+      endTime = #{endtime,jdbcType=TIMESTAMP},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=TINYINT},
+      type = #{type,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

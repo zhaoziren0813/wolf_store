@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_sms_marketingMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_sms_marketing" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="sendTime" property="sendtime" jdbcType="TIMESTAMP" />
+    <result column="sendCounts" property="sendcounts" jdbcType="INTEGER" />
+    <result column="returnstatus" property="returnstatus" jdbcType="VARCHAR" />
+    <result column="message" property="message" jdbcType="VARCHAR" />
+    <result column="remainpoint" property="remainpoint" jdbcType="INTEGER" />
+    <result column="taskID" property="taskid" jdbcType="VARCHAR" />
+    <result column="successCounts" property="successcounts" jdbcType="INTEGER" />
+    <result column="createUserId" property="createuserid" jdbcType="VARCHAR" />
+    <result column="createDateTime" property="createdatetime" jdbcType="TIMESTAMP" />
+    <result column="updateUserId" property="updateuserid" jdbcType="VARCHAR" />
+    <result column="updateDateTime" property="updatedatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.wolf.pojo.wl_sms_marketingWithBLOBs" extends="BaseResultMap" >
+    <result column="mobile" property="mobile" jdbcType="LONGVARCHAR" />
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sendTime, sendCounts, returnstatus, message, remainpoint, taskID, successCounts, 
+    createUserId, createDateTime, updateUserId, updateDateTime
+  </sql>
+  <sql id="Blob_Column_List" >
+    mobile, content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from wl_sms_marketing
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_sms_marketing
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_sms_marketingWithBLOBs" >
+    insert into wl_sms_marketing (id, sendTime, sendCounts, 
+      returnstatus, message, remainpoint, 
+      taskID, successCounts, createUserId, 
+      createDateTime, updateUserId, updateDateTime, 
+      mobile, content)
+    values (#{id,jdbcType=VARCHAR}, #{sendtime,jdbcType=TIMESTAMP}, #{sendcounts,jdbcType=INTEGER}, 
+      #{returnstatus,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, #{remainpoint,jdbcType=INTEGER}, 
+      #{taskid,jdbcType=VARCHAR}, #{successcounts,jdbcType=INTEGER}, #{createuserid,jdbcType=VARCHAR}, 
+      #{createdatetime,jdbcType=TIMESTAMP}, #{updateuserid,jdbcType=VARCHAR}, #{updatedatetime,jdbcType=TIMESTAMP}, 
+      #{mobile,jdbcType=LONGVARCHAR}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_sms_marketingWithBLOBs" >
+    insert into wl_sms_marketing
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sendtime != null" >
+        sendTime,
+      </if>
+      <if test="sendcounts != null" >
+        sendCounts,
+      </if>
+      <if test="returnstatus != null" >
+        returnstatus,
+      </if>
+      <if test="message != null" >
+        message,
+      </if>
+      <if test="remainpoint != null" >
+        remainpoint,
+      </if>
+      <if test="taskid != null" >
+        taskID,
+      </if>
+      <if test="successcounts != null" >
+        successCounts,
+      </if>
+      <if test="createuserid != null" >
+        createUserId,
+      </if>
+      <if test="createdatetime != null" >
+        createDateTime,
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId,
+      </if>
+      <if test="updatedatetime != null" >
+        updateDateTime,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="sendtime != null" >
+        #{sendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendcounts != null" >
+        #{sendcounts,jdbcType=INTEGER},
+      </if>
+      <if test="returnstatus != null" >
+        #{returnstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="remainpoint != null" >
+        #{remainpoint,jdbcType=INTEGER},
+      </if>
+      <if test="taskid != null" >
+        #{taskid,jdbcType=VARCHAR},
+      </if>
+      <if test="successcounts != null" >
+        #{successcounts,jdbcType=INTEGER},
+      </if>
+      <if test="createuserid != null" >
+        #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdatetime != null" >
+        #{createdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedatetime != null" >
+        #{updatedatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_sms_marketingWithBLOBs" >
+    update wl_sms_marketing
+    <set >
+      <if test="sendtime != null" >
+        sendTime = #{sendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendcounts != null" >
+        sendCounts = #{sendcounts,jdbcType=INTEGER},
+      </if>
+      <if test="returnstatus != null" >
+        returnstatus = #{returnstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="remainpoint != null" >
+        remainpoint = #{remainpoint,jdbcType=INTEGER},
+      </if>
+      <if test="taskid != null" >
+        taskID = #{taskid,jdbcType=VARCHAR},
+      </if>
+      <if test="successcounts != null" >
+        successCounts = #{successcounts,jdbcType=INTEGER},
+      </if>
+      <if test="createuserid != null" >
+        createUserId = #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdatetime != null" >
+        createDateTime = #{createdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedatetime != null" >
+        updateDateTime = #{updatedatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.wolf.pojo.wl_sms_marketingWithBLOBs" >
+    update wl_sms_marketing
+    set sendTime = #{sendtime,jdbcType=TIMESTAMP},
+      sendCounts = #{sendcounts,jdbcType=INTEGER},
+      returnstatus = #{returnstatus,jdbcType=VARCHAR},
+      message = #{message,jdbcType=VARCHAR},
+      remainpoint = #{remainpoint,jdbcType=INTEGER},
+      taskID = #{taskid,jdbcType=VARCHAR},
+      successCounts = #{successcounts,jdbcType=INTEGER},
+      createUserId = #{createuserid,jdbcType=VARCHAR},
+      createDateTime = #{createdatetime,jdbcType=TIMESTAMP},
+      updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      updateDateTime = #{updatedatetime,jdbcType=TIMESTAMP},
+      mobile = #{mobile,jdbcType=LONGVARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_sms_marketing" >
+    update wl_sms_marketing
+    set sendTime = #{sendtime,jdbcType=TIMESTAMP},
+      sendCounts = #{sendcounts,jdbcType=INTEGER},
+      returnstatus = #{returnstatus,jdbcType=VARCHAR},
+      message = #{message,jdbcType=VARCHAR},
+      remainpoint = #{remainpoint,jdbcType=INTEGER},
+      taskID = #{taskid,jdbcType=VARCHAR},
+      successCounts = #{successcounts,jdbcType=INTEGER},
+      createUserId = #{createuserid,jdbcType=VARCHAR},
+      createDateTime = #{createdatetime,jdbcType=TIMESTAMP},
+      updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      updateDateTime = #{updatedatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

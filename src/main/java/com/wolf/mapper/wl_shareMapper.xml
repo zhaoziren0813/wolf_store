@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_shareMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_share" >
+    <id column="commodityId" property="commodityid" jdbcType="VARCHAR" />
+    <id column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="shareQuantity" property="sharequantity" jdbcType="INTEGER" />
+    <result column="datetime" property="datetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    commodityId, userId, shareQuantity, datetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.wolf.pojo.wl_shareKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_share
+    where commodityId = #{commodityid,jdbcType=VARCHAR}
+      and userId = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.wolf.pojo.wl_shareKey" >
+    delete from wl_share
+    where commodityId = #{commodityid,jdbcType=VARCHAR}
+      and userId = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_share" >
+    insert into wl_share (commodityId, userId, shareQuantity, 
+      datetime)
+    values (#{commodityid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{sharequantity,jdbcType=INTEGER}, 
+      #{datetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_share" >
+    insert into wl_share
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commodityid != null" >
+        commodityId,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="sharequantity != null" >
+        shareQuantity,
+      </if>
+      <if test="datetime != null" >
+        datetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commodityid != null" >
+        #{commodityid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="sharequantity != null" >
+        #{sharequantity,jdbcType=INTEGER},
+      </if>
+      <if test="datetime != null" >
+        #{datetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_share" >
+    update wl_share
+    <set >
+      <if test="sharequantity != null" >
+        shareQuantity = #{sharequantity,jdbcType=INTEGER},
+      </if>
+      <if test="datetime != null" >
+        datetime = #{datetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where commodityId = #{commodityid,jdbcType=VARCHAR}
+      and userId = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_share" >
+    update wl_share
+    set shareQuantity = #{sharequantity,jdbcType=INTEGER},
+      datetime = #{datetime,jdbcType=TIMESTAMP}
+    where commodityId = #{commodityid,jdbcType=VARCHAR}
+      and userId = #{userid,jdbcType=VARCHAR}
+  </update>
+</mapper>

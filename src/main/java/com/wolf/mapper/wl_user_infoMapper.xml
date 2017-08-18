@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_user_infoMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_user_info" >
+    <id column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="educationalBackground" property="educationalbackground" jdbcType="VARCHAR" />
+    <result column="workingLife" property="workinglife" jdbcType="INTEGER" />
+    <result column="job" property="job" jdbcType="VARCHAR" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="channel" property="channel" jdbcType="VARCHAR" />
+    <result column="marketingSms" property="marketingsms" jdbcType="BIT" />
+    <result column="createUserId" property="createuserid" jdbcType="VARCHAR" />
+    <result column="createDateTime" property="createdatetime" jdbcType="TIMESTAMP" />
+    <result column="updateUserId" property="updateuserid" jdbcType="VARCHAR" />
+    <result column="updateDateTime" property="updatedatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mobile, name, age, educationalBackground, workingLife, job, company, channel, marketingSms, 
+    createUserId, createDateTime, updateUserId, updateDateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_user_info
+    where mobile = #{mobile,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_user_info
+    where mobile = #{mobile,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_user_info" >
+    insert into wl_user_info (mobile, name, age, 
+      educationalBackground, workingLife, job, 
+      company, channel, marketingSms, 
+      createUserId, createDateTime, updateUserId, 
+      updateDateTime)
+    values (#{mobile,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
+      #{educationalbackground,jdbcType=VARCHAR}, #{workinglife,jdbcType=INTEGER}, #{job,jdbcType=VARCHAR}, 
+      #{company,jdbcType=VARCHAR}, #{channel,jdbcType=VARCHAR}, #{marketingsms,jdbcType=BIT}, 
+      #{createuserid,jdbcType=VARCHAR}, #{createdatetime,jdbcType=TIMESTAMP}, #{updateuserid,jdbcType=VARCHAR}, 
+      #{updatedatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_user_info" >
+    insert into wl_user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="educationalbackground != null" >
+        educationalBackground,
+      </if>
+      <if test="workinglife != null" >
+        workingLife,
+      </if>
+      <if test="job != null" >
+        job,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="channel != null" >
+        channel,
+      </if>
+      <if test="marketingsms != null" >
+        marketingSms,
+      </if>
+      <if test="createuserid != null" >
+        createUserId,
+      </if>
+      <if test="createdatetime != null" >
+        createDateTime,
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId,
+      </if>
+      <if test="updatedatetime != null" >
+        updateDateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="educationalbackground != null" >
+        #{educationalbackground,jdbcType=VARCHAR},
+      </if>
+      <if test="workinglife != null" >
+        #{workinglife,jdbcType=INTEGER},
+      </if>
+      <if test="job != null" >
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="marketingsms != null" >
+        #{marketingsms,jdbcType=BIT},
+      </if>
+      <if test="createuserid != null" >
+        #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdatetime != null" >
+        #{createdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedatetime != null" >
+        #{updatedatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_user_info" >
+    update wl_user_info
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="educationalbackground != null" >
+        educationalBackground = #{educationalbackground,jdbcType=VARCHAR},
+      </if>
+      <if test="workinglife != null" >
+        workingLife = #{workinglife,jdbcType=INTEGER},
+      </if>
+      <if test="job != null" >
+        job = #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        channel = #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="marketingsms != null" >
+        marketingSms = #{marketingsms,jdbcType=BIT},
+      </if>
+      <if test="createuserid != null" >
+        createUserId = #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdatetime != null" >
+        createDateTime = #{createdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedatetime != null" >
+        updateDateTime = #{updatedatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where mobile = #{mobile,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_user_info" >
+    update wl_user_info
+    set name = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      educationalBackground = #{educationalbackground,jdbcType=VARCHAR},
+      workingLife = #{workinglife,jdbcType=INTEGER},
+      job = #{job,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      channel = #{channel,jdbcType=VARCHAR},
+      marketingSms = #{marketingsms,jdbcType=BIT},
+      createUserId = #{createuserid,jdbcType=VARCHAR},
+      createDateTime = #{createdatetime,jdbcType=TIMESTAMP},
+      updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      updateDateTime = #{updatedatetime,jdbcType=TIMESTAMP}
+    where mobile = #{mobile,jdbcType=VARCHAR}
+  </update>
+</mapper>

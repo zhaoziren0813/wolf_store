@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_refund_detailMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_refund_detail" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="refundOrderNo" property="refundorderno" jdbcType="VARCHAR" />
+    <result column="orderNo" property="orderno" jdbcType="VARCHAR" />
+    <result column="orderDetailId" property="orderdetailid" jdbcType="VARCHAR" />
+    <result column="refundMoney" property="refundmoney" jdbcType="INTEGER" />
+    <result column="refundMoneyStatus" property="refundmoneystatus" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="payMoney" property="paymoney" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, refundOrderNo, orderNo, orderDetailId, refundMoney, refundMoneyStatus, createTime, 
+    updateTime, payMoney, description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_refund_detail
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_refund_detail
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_refund_detail" >
+    insert into wl_refund_detail (id, refundOrderNo, orderNo, 
+      orderDetailId, refundMoney, refundMoneyStatus, 
+      createTime, updateTime, payMoney, 
+      description)
+    values (#{id,jdbcType=VARCHAR}, #{refundorderno,jdbcType=VARCHAR}, #{orderno,jdbcType=VARCHAR}, 
+      #{orderdetailid,jdbcType=VARCHAR}, #{refundmoney,jdbcType=INTEGER}, #{refundmoneystatus,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{paymoney,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_refund_detail" >
+    insert into wl_refund_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="refundorderno != null" >
+        refundOrderNo,
+      </if>
+      <if test="orderno != null" >
+        orderNo,
+      </if>
+      <if test="orderdetailid != null" >
+        orderDetailId,
+      </if>
+      <if test="refundmoney != null" >
+        refundMoney,
+      </if>
+      <if test="refundmoneystatus != null" >
+        refundMoneyStatus,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="paymoney != null" >
+        payMoney,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="refundorderno != null" >
+        #{refundorderno,jdbcType=VARCHAR},
+      </if>
+      <if test="orderno != null" >
+        #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="orderdetailid != null" >
+        #{orderdetailid,jdbcType=VARCHAR},
+      </if>
+      <if test="refundmoney != null" >
+        #{refundmoney,jdbcType=INTEGER},
+      </if>
+      <if test="refundmoneystatus != null" >
+        #{refundmoneystatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymoney != null" >
+        #{paymoney,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_refund_detail" >
+    update wl_refund_detail
+    <set >
+      <if test="refundorderno != null" >
+        refundOrderNo = #{refundorderno,jdbcType=VARCHAR},
+      </if>
+      <if test="orderno != null" >
+        orderNo = #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="orderdetailid != null" >
+        orderDetailId = #{orderdetailid,jdbcType=VARCHAR},
+      </if>
+      <if test="refundmoney != null" >
+        refundMoney = #{refundmoney,jdbcType=INTEGER},
+      </if>
+      <if test="refundmoneystatus != null" >
+        refundMoneyStatus = #{refundmoneystatus,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymoney != null" >
+        payMoney = #{paymoney,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_refund_detail" >
+    update wl_refund_detail
+    set refundOrderNo = #{refundorderno,jdbcType=VARCHAR},
+      orderNo = #{orderno,jdbcType=VARCHAR},
+      orderDetailId = #{orderdetailid,jdbcType=VARCHAR},
+      refundMoney = #{refundmoney,jdbcType=INTEGER},
+      refundMoneyStatus = #{refundmoneystatus,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      payMoney = #{paymoney,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

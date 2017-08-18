@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_group_buyMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_group_buy" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="groupBuyName" property="groupbuyname" jdbcType="VARCHAR" />
+    <result column="groupBuyDesc" property="groupbuydesc" jdbcType="VARCHAR" />
+    <result column="groupBuyImage" property="groupbuyimage" jdbcType="VARCHAR" />
+    <result column="commodityId" property="commodityid" jdbcType="VARCHAR" />
+    <result column="inventoryId" property="inventoryid" jdbcType="VARCHAR" />
+    <result column="property" property="property" jdbcType="VARCHAR" />
+    <result column="oprice" property="oprice" jdbcType="INTEGER" />
+    <result column="groupBuyPrice" property="groupbuyprice" jdbcType="INTEGER" />
+    <result column="minimumNumber" property="minimumnumber" jdbcType="INTEGER" />
+    <result column="maximumNumber" property="maximumnumber" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="createUser" property="createuser" jdbcType="VARCHAR" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="updateUser" property="updateuser" jdbcType="VARCHAR" />
+    <result column="beginTime" property="begintime" jdbcType="TIMESTAMP" />
+    <result column="endTime" property="endtime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, groupBuyName, groupBuyDesc, groupBuyImage, commodityId, inventoryId, property, 
+    oprice, groupBuyPrice, minimumNumber, maximumNumber, createTime, createUser, updateTime, 
+    updateUser, beginTime, endTime, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_group_buy
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_group_buy
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_group_buy" >
+    insert into wl_group_buy (id, groupBuyName, groupBuyDesc, 
+      groupBuyImage, commodityId, inventoryId, 
+      property, oprice, groupBuyPrice, 
+      minimumNumber, maximumNumber, createTime, 
+      createUser, updateTime, updateUser, 
+      beginTime, endTime, status
+      )
+    values (#{id,jdbcType=VARCHAR}, #{groupbuyname,jdbcType=VARCHAR}, #{groupbuydesc,jdbcType=VARCHAR}, 
+      #{groupbuyimage,jdbcType=VARCHAR}, #{commodityid,jdbcType=VARCHAR}, #{inventoryid,jdbcType=VARCHAR}, 
+      #{property,jdbcType=VARCHAR}, #{oprice,jdbcType=INTEGER}, #{groupbuyprice,jdbcType=INTEGER}, 
+      #{minimumnumber,jdbcType=INTEGER}, #{maximumnumber,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{createuser,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, #{updateuser,jdbcType=VARCHAR}, 
+      #{begintime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, #{status,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_group_buy" >
+    insert into wl_group_buy
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="groupbuyname != null" >
+        groupBuyName,
+      </if>
+      <if test="groupbuydesc != null" >
+        groupBuyDesc,
+      </if>
+      <if test="groupbuyimage != null" >
+        groupBuyImage,
+      </if>
+      <if test="commodityid != null" >
+        commodityId,
+      </if>
+      <if test="inventoryid != null" >
+        inventoryId,
+      </if>
+      <if test="property != null" >
+        property,
+      </if>
+      <if test="oprice != null" >
+        oprice,
+      </if>
+      <if test="groupbuyprice != null" >
+        groupBuyPrice,
+      </if>
+      <if test="minimumnumber != null" >
+        minimumNumber,
+      </if>
+      <if test="maximumnumber != null" >
+        maximumNumber,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="createuser != null" >
+        createUser,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="updateuser != null" >
+        updateUser,
+      </if>
+      <if test="begintime != null" >
+        beginTime,
+      </if>
+      <if test="endtime != null" >
+        endTime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="groupbuyname != null" >
+        #{groupbuyname,jdbcType=VARCHAR},
+      </if>
+      <if test="groupbuydesc != null" >
+        #{groupbuydesc,jdbcType=VARCHAR},
+      </if>
+      <if test="groupbuyimage != null" >
+        #{groupbuyimage,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityid != null" >
+        #{commodityid,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryid != null" >
+        #{inventoryid,jdbcType=VARCHAR},
+      </if>
+      <if test="property != null" >
+        #{property,jdbcType=VARCHAR},
+      </if>
+      <if test="oprice != null" >
+        #{oprice,jdbcType=INTEGER},
+      </if>
+      <if test="groupbuyprice != null" >
+        #{groupbuyprice,jdbcType=INTEGER},
+      </if>
+      <if test="minimumnumber != null" >
+        #{minimumnumber,jdbcType=INTEGER},
+      </if>
+      <if test="maximumnumber != null" >
+        #{maximumnumber,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null" >
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuser != null" >
+        #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="begintime != null" >
+        #{begintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_group_buy" >
+    update wl_group_buy
+    <set >
+      <if test="groupbuyname != null" >
+        groupBuyName = #{groupbuyname,jdbcType=VARCHAR},
+      </if>
+      <if test="groupbuydesc != null" >
+        groupBuyDesc = #{groupbuydesc,jdbcType=VARCHAR},
+      </if>
+      <if test="groupbuyimage != null" >
+        groupBuyImage = #{groupbuyimage,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityid != null" >
+        commodityId = #{commodityid,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryid != null" >
+        inventoryId = #{inventoryid,jdbcType=VARCHAR},
+      </if>
+      <if test="property != null" >
+        property = #{property,jdbcType=VARCHAR},
+      </if>
+      <if test="oprice != null" >
+        oprice = #{oprice,jdbcType=INTEGER},
+      </if>
+      <if test="groupbuyprice != null" >
+        groupBuyPrice = #{groupbuyprice,jdbcType=INTEGER},
+      </if>
+      <if test="minimumnumber != null" >
+        minimumNumber = #{minimumnumber,jdbcType=INTEGER},
+      </if>
+      <if test="maximumnumber != null" >
+        maximumNumber = #{maximumnumber,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null" >
+        createUser = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuser != null" >
+        updateUser = #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="begintime != null" >
+        beginTime = #{begintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        endTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_group_buy" >
+    update wl_group_buy
+    set groupBuyName = #{groupbuyname,jdbcType=VARCHAR},
+      groupBuyDesc = #{groupbuydesc,jdbcType=VARCHAR},
+      groupBuyImage = #{groupbuyimage,jdbcType=VARCHAR},
+      commodityId = #{commodityid,jdbcType=VARCHAR},
+      inventoryId = #{inventoryid,jdbcType=VARCHAR},
+      property = #{property,jdbcType=VARCHAR},
+      oprice = #{oprice,jdbcType=INTEGER},
+      groupBuyPrice = #{groupbuyprice,jdbcType=INTEGER},
+      minimumNumber = #{minimumnumber,jdbcType=INTEGER},
+      maximumNumber = #{maximumnumber,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      createUser = #{createuser,jdbcType=VARCHAR},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      updateUser = #{updateuser,jdbcType=VARCHAR},
+      beginTime = #{begintime,jdbcType=TIMESTAMP},
+      endTime = #{endtime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=BIT}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

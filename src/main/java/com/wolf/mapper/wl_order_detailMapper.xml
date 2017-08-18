@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_order_detailMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_order_detail" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="canRefunds" property="canrefunds" jdbcType="INTEGER" />
+    <result column="orderNo" property="orderno" jdbcType="VARCHAR" />
+    <result column="groupBuyUserId" property="groupbuyuserid" jdbcType="VARCHAR" />
+    <result column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="commodityId" property="commodityid" jdbcType="VARCHAR" />
+    <result column="commodityName" property="commodityname" jdbcType="VARCHAR" />
+    <result column="inventoryId" property="inventoryid" jdbcType="VARCHAR" />
+    <result column="property" property="property" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="money" property="money" jdbcType="INTEGER" />
+    <result column="discountMoney" property="discountmoney" jdbcType="INTEGER" />
+    <result column="useIntegral" property="useintegral" jdbcType="INTEGER" />
+    <result column="useBalance" property="usebalance" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="comment" property="comment" jdbcType="INTEGER" />
+    <result column="proxyIds" property="proxyids" jdbcType="VARCHAR" />
+    <result column="proxyCommodityQuantity" property="proxycommodityquantity" jdbcType="VARCHAR" />
+    <result column="proxyCommission" property="proxycommission" jdbcType="INTEGER" />
+    <result column="shareId" property="shareid" jdbcType="VARCHAR" />
+    <result column="shareCommission" property="sharecommission" jdbcType="INTEGER" />
+    <result column="masterMoney" property="mastermoney" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, canRefunds, orderNo, groupBuyUserId, userId, commodityId, commodityName, inventoryId, 
+    property, image, price, quantity, money, discountMoney, useIntegral, useBalance, 
+    createTime, updateTime, status, comment, proxyIds, proxyCommodityQuantity, proxyCommission, 
+    shareId, shareCommission, masterMoney
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_order_detail
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_order_detail
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_order_detail" >
+    insert into wl_order_detail (id, canRefunds, orderNo, 
+      groupBuyUserId, userId, commodityId, 
+      commodityName, inventoryId, property, 
+      image, price, quantity, 
+      money, discountMoney, useIntegral, 
+      useBalance, createTime, updateTime, 
+      status, comment, proxyIds, 
+      proxyCommodityQuantity, proxyCommission, 
+      shareId, shareCommission, masterMoney
+      )
+    values (#{id,jdbcType=VARCHAR}, #{canrefunds,jdbcType=INTEGER}, #{orderno,jdbcType=VARCHAR}, 
+      #{groupbuyuserid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{commodityid,jdbcType=VARCHAR}, 
+      #{commodityname,jdbcType=VARCHAR}, #{inventoryid,jdbcType=VARCHAR}, #{property,jdbcType=VARCHAR}, 
+      #{image,jdbcType=VARCHAR}, #{price,jdbcType=INTEGER}, #{quantity,jdbcType=INTEGER}, 
+      #{money,jdbcType=INTEGER}, #{discountmoney,jdbcType=INTEGER}, #{useintegral,jdbcType=INTEGER}, 
+      #{usebalance,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{comment,jdbcType=INTEGER}, #{proxyids,jdbcType=VARCHAR}, 
+      #{proxycommodityquantity,jdbcType=VARCHAR}, #{proxycommission,jdbcType=INTEGER}, 
+      #{shareid,jdbcType=VARCHAR}, #{sharecommission,jdbcType=INTEGER}, #{mastermoney,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_order_detail" >
+    insert into wl_order_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="canrefunds != null" >
+        canRefunds,
+      </if>
+      <if test="orderno != null" >
+        orderNo,
+      </if>
+      <if test="groupbuyuserid != null" >
+        groupBuyUserId,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="commodityid != null" >
+        commodityId,
+      </if>
+      <if test="commodityname != null" >
+        commodityName,
+      </if>
+      <if test="inventoryid != null" >
+        inventoryId,
+      </if>
+      <if test="property != null" >
+        property,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="quantity != null" >
+        quantity,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="discountmoney != null" >
+        discountMoney,
+      </if>
+      <if test="useintegral != null" >
+        useIntegral,
+      </if>
+      <if test="usebalance != null" >
+        useBalance,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+      <if test="proxyids != null" >
+        proxyIds,
+      </if>
+      <if test="proxycommodityquantity != null" >
+        proxyCommodityQuantity,
+      </if>
+      <if test="proxycommission != null" >
+        proxyCommission,
+      </if>
+      <if test="shareid != null" >
+        shareId,
+      </if>
+      <if test="sharecommission != null" >
+        shareCommission,
+      </if>
+      <if test="mastermoney != null" >
+        masterMoney,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="canrefunds != null" >
+        #{canrefunds,jdbcType=INTEGER},
+      </if>
+      <if test="orderno != null" >
+        #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="groupbuyuserid != null" >
+        #{groupbuyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityid != null" >
+        #{commodityid,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityname != null" >
+        #{commodityname,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryid != null" >
+        #{inventoryid,jdbcType=VARCHAR},
+      </if>
+      <if test="property != null" >
+        #{property,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=INTEGER},
+      </if>
+      <if test="discountmoney != null" >
+        #{discountmoney,jdbcType=INTEGER},
+      </if>
+      <if test="useintegral != null" >
+        #{useintegral,jdbcType=INTEGER},
+      </if>
+      <if test="usebalance != null" >
+        #{usebalance,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=INTEGER},
+      </if>
+      <if test="proxyids != null" >
+        #{proxyids,jdbcType=VARCHAR},
+      </if>
+      <if test="proxycommodityquantity != null" >
+        #{proxycommodityquantity,jdbcType=VARCHAR},
+      </if>
+      <if test="proxycommission != null" >
+        #{proxycommission,jdbcType=INTEGER},
+      </if>
+      <if test="shareid != null" >
+        #{shareid,jdbcType=VARCHAR},
+      </if>
+      <if test="sharecommission != null" >
+        #{sharecommission,jdbcType=INTEGER},
+      </if>
+      <if test="mastermoney != null" >
+        #{mastermoney,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_order_detail" >
+    update wl_order_detail
+    <set >
+      <if test="canrefunds != null" >
+        canRefunds = #{canrefunds,jdbcType=INTEGER},
+      </if>
+      <if test="orderno != null" >
+        orderNo = #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="groupbuyuserid != null" >
+        groupBuyUserId = #{groupbuyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityid != null" >
+        commodityId = #{commodityid,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityname != null" >
+        commodityName = #{commodityname,jdbcType=VARCHAR},
+      </if>
+      <if test="inventoryid != null" >
+        inventoryId = #{inventoryid,jdbcType=VARCHAR},
+      </if>
+      <if test="property != null" >
+        property = #{property,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="quantity != null" >
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=INTEGER},
+      </if>
+      <if test="discountmoney != null" >
+        discountMoney = #{discountmoney,jdbcType=INTEGER},
+      </if>
+      <if test="useintegral != null" >
+        useIntegral = #{useintegral,jdbcType=INTEGER},
+      </if>
+      <if test="usebalance != null" >
+        useBalance = #{usebalance,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=INTEGER},
+      </if>
+      <if test="proxyids != null" >
+        proxyIds = #{proxyids,jdbcType=VARCHAR},
+      </if>
+      <if test="proxycommodityquantity != null" >
+        proxyCommodityQuantity = #{proxycommodityquantity,jdbcType=VARCHAR},
+      </if>
+      <if test="proxycommission != null" >
+        proxyCommission = #{proxycommission,jdbcType=INTEGER},
+      </if>
+      <if test="shareid != null" >
+        shareId = #{shareid,jdbcType=VARCHAR},
+      </if>
+      <if test="sharecommission != null" >
+        shareCommission = #{sharecommission,jdbcType=INTEGER},
+      </if>
+      <if test="mastermoney != null" >
+        masterMoney = #{mastermoney,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_order_detail" >
+    update wl_order_detail
+    set canRefunds = #{canrefunds,jdbcType=INTEGER},
+      orderNo = #{orderno,jdbcType=VARCHAR},
+      groupBuyUserId = #{groupbuyuserid,jdbcType=VARCHAR},
+      userId = #{userid,jdbcType=VARCHAR},
+      commodityId = #{commodityid,jdbcType=VARCHAR},
+      commodityName = #{commodityname,jdbcType=VARCHAR},
+      inventoryId = #{inventoryid,jdbcType=VARCHAR},
+      property = #{property,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      price = #{price,jdbcType=INTEGER},
+      quantity = #{quantity,jdbcType=INTEGER},
+      money = #{money,jdbcType=INTEGER},
+      discountMoney = #{discountmoney,jdbcType=INTEGER},
+      useIntegral = #{useintegral,jdbcType=INTEGER},
+      useBalance = #{usebalance,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      comment = #{comment,jdbcType=INTEGER},
+      proxyIds = #{proxyids,jdbcType=VARCHAR},
+      proxyCommodityQuantity = #{proxycommodityquantity,jdbcType=VARCHAR},
+      proxyCommission = #{proxycommission,jdbcType=INTEGER},
+      shareId = #{shareid,jdbcType=VARCHAR},
+      shareCommission = #{sharecommission,jdbcType=INTEGER},
+      masterMoney = #{mastermoney,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

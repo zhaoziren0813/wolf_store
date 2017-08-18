@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_activity_configMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_activity_config" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="activityName" property="activityname" jdbcType="VARCHAR" />
+    <result column="activityUrl" property="activityurl" jdbcType="VARCHAR" />
+    <result column="activitySql" property="activitysql" jdbcType="VARCHAR" />
+    <result column="createUserId" property="createuserid" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateUserId" property="updateuserid" jdbcType="VARCHAR" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="activityExpiredTime" property="activityexpiredtime" jdbcType="TIMESTAMP" />
+    <result column="activityType" property="activitytype" jdbcType="INTEGER" />
+    <result column="activityImageUrl" property="activityimageurl" jdbcType="VARCHAR" />
+    <result column="backgroundColor" property="backgroundcolor" jdbcType="VARCHAR" />
+    <result column="adType" property="adtype" jdbcType="INTEGER" />
+    <result column="adSql" property="adsql" jdbcType="VARCHAR" />
+    <result column="shareTitle" property="sharetitle" jdbcType="VARCHAR" />
+    <result column="shareText" property="sharetext" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, activityName, activityUrl, activitySql, createUserId, createTime, updateUserId, 
+    updateTime, status, remark, activityExpiredTime, activityType, activityImageUrl, 
+    backgroundColor, adType, adSql, shareTitle, shareText
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_activity_config
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_activity_config
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_activity_config" >
+    insert into wl_activity_config (id, activityName, activityUrl, 
+      activitySql, createUserId, createTime, 
+      updateUserId, updateTime, status, 
+      remark, activityExpiredTime, activityType, 
+      activityImageUrl, backgroundColor, adType, 
+      adSql, shareTitle, shareText
+      )
+    values (#{id,jdbcType=VARCHAR}, #{activityname,jdbcType=VARCHAR}, #{activityurl,jdbcType=VARCHAR}, 
+      #{activitysql,jdbcType=VARCHAR}, #{createuserid,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updateuserid,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{activityexpiredtime,jdbcType=TIMESTAMP}, #{activitytype,jdbcType=INTEGER}, 
+      #{activityimageurl,jdbcType=VARCHAR}, #{backgroundcolor,jdbcType=VARCHAR}, #{adtype,jdbcType=INTEGER}, 
+      #{adsql,jdbcType=VARCHAR}, #{sharetitle,jdbcType=VARCHAR}, #{sharetext,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_activity_config" >
+    insert into wl_activity_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="activityname != null" >
+        activityName,
+      </if>
+      <if test="activityurl != null" >
+        activityUrl,
+      </if>
+      <if test="activitysql != null" >
+        activitySql,
+      </if>
+      <if test="createuserid != null" >
+        createUserId,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="activityexpiredtime != null" >
+        activityExpiredTime,
+      </if>
+      <if test="activitytype != null" >
+        activityType,
+      </if>
+      <if test="activityimageurl != null" >
+        activityImageUrl,
+      </if>
+      <if test="backgroundcolor != null" >
+        backgroundColor,
+      </if>
+      <if test="adtype != null" >
+        adType,
+      </if>
+      <if test="adsql != null" >
+        adSql,
+      </if>
+      <if test="sharetitle != null" >
+        shareTitle,
+      </if>
+      <if test="sharetext != null" >
+        shareText,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="activityname != null" >
+        #{activityname,jdbcType=VARCHAR},
+      </if>
+      <if test="activityurl != null" >
+        #{activityurl,jdbcType=VARCHAR},
+      </if>
+      <if test="activitysql != null" >
+        #{activitysql,jdbcType=VARCHAR},
+      </if>
+      <if test="createuserid != null" >
+        #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="activityexpiredtime != null" >
+        #{activityexpiredtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activitytype != null" >
+        #{activitytype,jdbcType=INTEGER},
+      </if>
+      <if test="activityimageurl != null" >
+        #{activityimageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="backgroundcolor != null" >
+        #{backgroundcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="adtype != null" >
+        #{adtype,jdbcType=INTEGER},
+      </if>
+      <if test="adsql != null" >
+        #{adsql,jdbcType=VARCHAR},
+      </if>
+      <if test="sharetitle != null" >
+        #{sharetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="sharetext != null" >
+        #{sharetext,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_activity_config" >
+    update wl_activity_config
+    <set >
+      <if test="activityname != null" >
+        activityName = #{activityname,jdbcType=VARCHAR},
+      </if>
+      <if test="activityurl != null" >
+        activityUrl = #{activityurl,jdbcType=VARCHAR},
+      </if>
+      <if test="activitysql != null" >
+        activitySql = #{activitysql,jdbcType=VARCHAR},
+      </if>
+      <if test="createuserid != null" >
+        createUserId = #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="activityexpiredtime != null" >
+        activityExpiredTime = #{activityexpiredtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activitytype != null" >
+        activityType = #{activitytype,jdbcType=INTEGER},
+      </if>
+      <if test="activityimageurl != null" >
+        activityImageUrl = #{activityimageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="backgroundcolor != null" >
+        backgroundColor = #{backgroundcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="adtype != null" >
+        adType = #{adtype,jdbcType=INTEGER},
+      </if>
+      <if test="adsql != null" >
+        adSql = #{adsql,jdbcType=VARCHAR},
+      </if>
+      <if test="sharetitle != null" >
+        shareTitle = #{sharetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="sharetext != null" >
+        shareText = #{sharetext,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_activity_config" >
+    update wl_activity_config
+    set activityName = #{activityname,jdbcType=VARCHAR},
+      activityUrl = #{activityurl,jdbcType=VARCHAR},
+      activitySql = #{activitysql,jdbcType=VARCHAR},
+      createUserId = #{createuserid,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      activityExpiredTime = #{activityexpiredtime,jdbcType=TIMESTAMP},
+      activityType = #{activitytype,jdbcType=INTEGER},
+      activityImageUrl = #{activityimageurl,jdbcType=VARCHAR},
+      backgroundColor = #{backgroundcolor,jdbcType=VARCHAR},
+      adType = #{adtype,jdbcType=INTEGER},
+      adSql = #{adsql,jdbcType=VARCHAR},
+      shareTitle = #{sharetitle,jdbcType=VARCHAR},
+      shareText = #{sharetext,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

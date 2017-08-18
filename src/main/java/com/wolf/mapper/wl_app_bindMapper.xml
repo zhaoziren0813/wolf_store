@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_app_bindMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_app_bind" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="appName" property="appname" jdbcType="VARCHAR" />
+    <result column="appCode" property="appcode" jdbcType="VARCHAR" />
+    <result column="queueName" property="queuename" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="createUserId" property="createuserid" jdbcType="VARCHAR" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="updateUserId" property="updateuserid" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, appName, appCode, queueName, createTime, createUserId, updateTime, updateUserId, 
+    status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_app_bind
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_app_bind
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_app_bind" >
+    insert into wl_app_bind (id, appName, appCode, 
+      queueName, createTime, createUserId, 
+      updateTime, updateUserId, status
+      )
+    values (#{id,jdbcType=VARCHAR}, #{appname,jdbcType=VARCHAR}, #{appcode,jdbcType=VARCHAR}, 
+      #{queuename,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{createuserid,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{updateuserid,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_app_bind" >
+    insert into wl_app_bind
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="appname != null" >
+        appName,
+      </if>
+      <if test="appcode != null" >
+        appCode,
+      </if>
+      <if test="queuename != null" >
+        queueName,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="createuserid != null" >
+        createUserId,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="appname != null" >
+        #{appname,jdbcType=VARCHAR},
+      </if>
+      <if test="appcode != null" >
+        #{appcode,jdbcType=VARCHAR},
+      </if>
+      <if test="queuename != null" >
+        #{queuename,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuserid != null" >
+        #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_app_bind" >
+    update wl_app_bind
+    <set >
+      <if test="appname != null" >
+        appName = #{appname,jdbcType=VARCHAR},
+      </if>
+      <if test="appcode != null" >
+        appCode = #{appcode,jdbcType=VARCHAR},
+      </if>
+      <if test="queuename != null" >
+        queueName = #{queuename,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuserid != null" >
+        createUserId = #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_app_bind" >
+    update wl_app_bind
+    set appName = #{appname,jdbcType=VARCHAR},
+      appCode = #{appcode,jdbcType=VARCHAR},
+      queueName = #{queuename,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      createUserId = #{createuserid,jdbcType=VARCHAR},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

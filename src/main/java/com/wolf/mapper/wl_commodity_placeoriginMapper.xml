@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_commodity_placeoriginMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_commodity_placeorigin" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="chnOrigin" property="chnorigin" jdbcType="VARCHAR" />
+    <result column="engOrigin" property="engorigin" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="placeCode" property="placecode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, chnOrigin, engOrigin, createTime, status, placeCode
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_commodity_placeorigin
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_commodity_placeorigin
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_commodity_placeorigin" >
+    insert into wl_commodity_placeorigin (id, chnOrigin, engOrigin, 
+      createTime, status, placeCode
+      )
+    values (#{id,jdbcType=VARCHAR}, #{chnorigin,jdbcType=VARCHAR}, #{engorigin,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{placecode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_commodity_placeorigin" >
+    insert into wl_commodity_placeorigin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="chnorigin != null" >
+        chnOrigin,
+      </if>
+      <if test="engorigin != null" >
+        engOrigin,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="placecode != null" >
+        placeCode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="chnorigin != null" >
+        #{chnorigin,jdbcType=VARCHAR},
+      </if>
+      <if test="engorigin != null" >
+        #{engorigin,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="placecode != null" >
+        #{placecode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_commodity_placeorigin" >
+    update wl_commodity_placeorigin
+    <set >
+      <if test="chnorigin != null" >
+        chnOrigin = #{chnorigin,jdbcType=VARCHAR},
+      </if>
+      <if test="engorigin != null" >
+        engOrigin = #{engorigin,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="placecode != null" >
+        placeCode = #{placecode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_commodity_placeorigin" >
+    update wl_commodity_placeorigin
+    set chnOrigin = #{chnorigin,jdbcType=VARCHAR},
+      engOrigin = #{engorigin,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      placeCode = #{placecode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

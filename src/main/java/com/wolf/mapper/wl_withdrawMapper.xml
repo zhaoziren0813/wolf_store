@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_withdrawMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_withdraw" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="withdrawNo" property="withdrawno" jdbcType="VARCHAR" />
+    <result column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="auditState" property="auditstate" jdbcType="INTEGER" />
+    <result column="auditor" property="auditor" jdbcType="VARCHAR" />
+    <result column="transferMoneyTime" property="transfermoneytime" jdbcType="TIMESTAMP" />
+    <result column="auditTime" property="audittime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="reason" property="reason" jdbcType="VARCHAR" />
+    <result column="realName" property="realname" jdbcType="VARCHAR" />
+    <result column="alipayAccount" property="alipayaccount" jdbcType="VARCHAR" />
+    <result column="openid" property="openid" jdbcType="VARCHAR" />
+    <result column="mchid" property="mchid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, withdrawNo, userId, money, type, createTime, auditState, auditor, transferMoneyTime, 
+    auditTime, status, reason, realName, alipayAccount, openid, mchid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_withdraw
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_withdraw
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_withdraw" >
+    insert into wl_withdraw (id, withdrawNo, userId, 
+      money, type, createTime, 
+      auditState, auditor, transferMoneyTime, 
+      auditTime, status, reason, 
+      realName, alipayAccount, openid, 
+      mchid)
+    values (#{id,jdbcType=VARCHAR}, #{withdrawno,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
+      #{money,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{auditstate,jdbcType=INTEGER}, #{auditor,jdbcType=VARCHAR}, #{transfermoneytime,jdbcType=TIMESTAMP}, 
+      #{audittime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{reason,jdbcType=VARCHAR}, 
+      #{realname,jdbcType=VARCHAR}, #{alipayaccount,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, 
+      #{mchid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_withdraw" >
+    insert into wl_withdraw
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="withdrawno != null" >
+        withdrawNo,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="auditstate != null" >
+        auditState,
+      </if>
+      <if test="auditor != null" >
+        auditor,
+      </if>
+      <if test="transfermoneytime != null" >
+        transferMoneyTime,
+      </if>
+      <if test="audittime != null" >
+        auditTime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="realname != null" >
+        realName,
+      </if>
+      <if test="alipayaccount != null" >
+        alipayAccount,
+      </if>
+      <if test="openid != null" >
+        openid,
+      </if>
+      <if test="mchid != null" >
+        mchid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="withdrawno != null" >
+        #{withdrawno,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditstate != null" >
+        #{auditstate,jdbcType=INTEGER},
+      </if>
+      <if test="auditor != null" >
+        #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="transfermoneytime != null" >
+        #{transfermoneytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="audittime != null" >
+        #{audittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="alipayaccount != null" >
+        #{alipayaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="mchid != null" >
+        #{mchid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_withdraw" >
+    update wl_withdraw
+    <set >
+      <if test="withdrawno != null" >
+        withdrawNo = #{withdrawno,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditstate != null" >
+        auditState = #{auditstate,jdbcType=INTEGER},
+      </if>
+      <if test="auditor != null" >
+        auditor = #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="transfermoneytime != null" >
+        transferMoneyTime = #{transfermoneytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="audittime != null" >
+        auditTime = #{audittime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        realName = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="alipayaccount != null" >
+        alipayAccount = #{alipayaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="mchid != null" >
+        mchid = #{mchid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_withdraw" >
+    update wl_withdraw
+    set withdrawNo = #{withdrawno,jdbcType=VARCHAR},
+      userId = #{userid,jdbcType=VARCHAR},
+      money = #{money,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      auditState = #{auditstate,jdbcType=INTEGER},
+      auditor = #{auditor,jdbcType=VARCHAR},
+      transferMoneyTime = #{transfermoneytime,jdbcType=TIMESTAMP},
+      auditTime = #{audittime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      reason = #{reason,jdbcType=VARCHAR},
+      realName = #{realname,jdbcType=VARCHAR},
+      alipayAccount = #{alipayaccount,jdbcType=VARCHAR},
+      openid = #{openid,jdbcType=VARCHAR},
+      mchid = #{mchid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

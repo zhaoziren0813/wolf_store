@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_homefloorMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_homefloor" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="homefloorStyleId" property="homefloorstyleid" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="imagedetail" property="imagedetail" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="homefloorSort" property="homefloorsort" jdbcType="INTEGER" />
+    <result column="createUserId" property="createuserid" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateUserId" property="updateuserid" jdbcType="VARCHAR" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="cType" property="ctype" jdbcType="INTEGER" />
+    <result column="commodityIds" property="commodityids" jdbcType="VARCHAR" />
+    <result column="commoditySql" property="commoditysql" jdbcType="VARCHAR" />
+    <result column="detailType" property="detailtype" jdbcType="INTEGER" />
+    <result column="shareTitle" property="sharetitle" jdbcType="VARCHAR" />
+    <result column="shareText" property="sharetext" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, homefloorStyleId, name, image, imagedetail, url, homefloorSort, createUserId, 
+    createTime, updateUserId, updateTime, status, cType, commodityIds, commoditySql, 
+    detailType, shareTitle, shareText, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_homefloor
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_homefloor
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_homefloor" >
+    insert into wl_homefloor (id, homefloorStyleId, name, 
+      image, imagedetail, url, 
+      homefloorSort, createUserId, createTime, 
+      updateUserId, updateTime, status, 
+      cType, commodityIds, commoditySql, 
+      detailType, shareTitle, shareText, 
+      remark)
+    values (#{id,jdbcType=VARCHAR}, #{homefloorstyleid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{image,jdbcType=VARCHAR}, #{imagedetail,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{homefloorsort,jdbcType=INTEGER}, #{createuserid,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updateuserid,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
+      #{ctype,jdbcType=INTEGER}, #{commodityids,jdbcType=VARCHAR}, #{commoditysql,jdbcType=VARCHAR}, 
+      #{detailtype,jdbcType=INTEGER}, #{sharetitle,jdbcType=VARCHAR}, #{sharetext,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_homefloor" >
+    insert into wl_homefloor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="homefloorstyleid != null" >
+        homefloorStyleId,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="imagedetail != null" >
+        imagedetail,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="homefloorsort != null" >
+        homefloorSort,
+      </if>
+      <if test="createuserid != null" >
+        createUserId,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="ctype != null" >
+        cType,
+      </if>
+      <if test="commodityids != null" >
+        commodityIds,
+      </if>
+      <if test="commoditysql != null" >
+        commoditySql,
+      </if>
+      <if test="detailtype != null" >
+        detailType,
+      </if>
+      <if test="sharetitle != null" >
+        shareTitle,
+      </if>
+      <if test="sharetext != null" >
+        shareText,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="homefloorstyleid != null" >
+        #{homefloorstyleid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="imagedetail != null" >
+        #{imagedetail,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="homefloorsort != null" >
+        #{homefloorsort,jdbcType=INTEGER},
+      </if>
+      <if test="createuserid != null" >
+        #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="ctype != null" >
+        #{ctype,jdbcType=INTEGER},
+      </if>
+      <if test="commodityids != null" >
+        #{commodityids,jdbcType=VARCHAR},
+      </if>
+      <if test="commoditysql != null" >
+        #{commoditysql,jdbcType=VARCHAR},
+      </if>
+      <if test="detailtype != null" >
+        #{detailtype,jdbcType=INTEGER},
+      </if>
+      <if test="sharetitle != null" >
+        #{sharetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="sharetext != null" >
+        #{sharetext,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_homefloor" >
+    update wl_homefloor
+    <set >
+      <if test="homefloorstyleid != null" >
+        homefloorStyleId = #{homefloorstyleid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="imagedetail != null" >
+        imagedetail = #{imagedetail,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="homefloorsort != null" >
+        homefloorSort = #{homefloorsort,jdbcType=INTEGER},
+      </if>
+      <if test="createuserid != null" >
+        createUserId = #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="ctype != null" >
+        cType = #{ctype,jdbcType=INTEGER},
+      </if>
+      <if test="commodityids != null" >
+        commodityIds = #{commodityids,jdbcType=VARCHAR},
+      </if>
+      <if test="commoditysql != null" >
+        commoditySql = #{commoditysql,jdbcType=VARCHAR},
+      </if>
+      <if test="detailtype != null" >
+        detailType = #{detailtype,jdbcType=INTEGER},
+      </if>
+      <if test="sharetitle != null" >
+        shareTitle = #{sharetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="sharetext != null" >
+        shareText = #{sharetext,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_homefloor" >
+    update wl_homefloor
+    set homefloorStyleId = #{homefloorstyleid,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      imagedetail = #{imagedetail,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      homefloorSort = #{homefloorsort,jdbcType=INTEGER},
+      createUserId = #{createuserid,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      cType = #{ctype,jdbcType=INTEGER},
+      commodityIds = #{commodityids,jdbcType=VARCHAR},
+      commoditySql = #{commoditysql,jdbcType=VARCHAR},
+      detailType = #{detailtype,jdbcType=INTEGER},
+      shareTitle = #{sharetitle,jdbcType=VARCHAR},
+      shareText = #{sharetext,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

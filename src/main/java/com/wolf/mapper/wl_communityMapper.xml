@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_communityMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_community" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="actUrl" property="acturl" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="subTitle" property="subtitle" jdbcType="VARCHAR" />
+    <result column="listImg" property="listimg" jdbcType="VARCHAR" />
+    <result column="categoryId" property="categoryid" jdbcType="VARCHAR" />
+    <result column="shareLinks" property="sharelinks" jdbcType="VARCHAR" />
+    <result column="communityType" property="communitytype" jdbcType="INTEGER" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="examine" property="examine" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="createUserId" property="createuserid" jdbcType="VARCHAR" />
+    <result column="updateUserId" property="updateuserid" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.wolf.pojo.wl_community" extends="BaseResultMap" >
+    <result column="text" property="text" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, actUrl, title, subTitle, listImg, categoryId, shareLinks, communityType, sort, 
+    createTime, updateTime, examine, status, createUserId, updateUserId
+  </sql>
+  <sql id="Blob_Column_List" >
+    text
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from wl_community
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_community
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_community" >
+    insert into wl_community (id, actUrl, title, 
+      subTitle, listImg, categoryId, 
+      shareLinks, communityType, sort, 
+      createTime, updateTime, examine, 
+      status, createUserId, updateUserId, 
+      text)
+    values (#{id,jdbcType=VARCHAR}, #{acturl,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{subtitle,jdbcType=VARCHAR}, #{listimg,jdbcType=VARCHAR}, #{categoryid,jdbcType=VARCHAR}, 
+      #{sharelinks,jdbcType=VARCHAR}, #{communitytype,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{examine,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{createuserid,jdbcType=VARCHAR}, #{updateuserid,jdbcType=VARCHAR}, 
+      #{text,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_community" >
+    insert into wl_community
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="acturl != null" >
+        actUrl,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="subtitle != null" >
+        subTitle,
+      </if>
+      <if test="listimg != null" >
+        listImg,
+      </if>
+      <if test="categoryid != null" >
+        categoryId,
+      </if>
+      <if test="sharelinks != null" >
+        shareLinks,
+      </if>
+      <if test="communitytype != null" >
+        communityType,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="examine != null" >
+        examine,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createuserid != null" >
+        createUserId,
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId,
+      </if>
+      <if test="text != null" >
+        text,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="acturl != null" >
+        #{acturl,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle != null" >
+        #{subtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="listimg != null" >
+        #{listimg,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryid != null" >
+        #{categoryid,jdbcType=VARCHAR},
+      </if>
+      <if test="sharelinks != null" >
+        #{sharelinks,jdbcType=VARCHAR},
+      </if>
+      <if test="communitytype != null" >
+        #{communitytype,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examine != null" >
+        #{examine,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createuserid != null" >
+        #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuserid != null" >
+        #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="text != null" >
+        #{text,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_community" >
+    update wl_community
+    <set >
+      <if test="acturl != null" >
+        actUrl = #{acturl,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="subtitle != null" >
+        subTitle = #{subtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="listimg != null" >
+        listImg = #{listimg,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryid != null" >
+        categoryId = #{categoryid,jdbcType=VARCHAR},
+      </if>
+      <if test="sharelinks != null" >
+        shareLinks = #{sharelinks,jdbcType=VARCHAR},
+      </if>
+      <if test="communitytype != null" >
+        communityType = #{communitytype,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="examine != null" >
+        examine = #{examine,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createuserid != null" >
+        createUserId = #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="text != null" >
+        text = #{text,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.wolf.pojo.wl_community" >
+    update wl_community
+    set actUrl = #{acturl,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      subTitle = #{subtitle,jdbcType=VARCHAR},
+      listImg = #{listimg,jdbcType=VARCHAR},
+      categoryId = #{categoryid,jdbcType=VARCHAR},
+      shareLinks = #{sharelinks,jdbcType=VARCHAR},
+      communityType = #{communitytype,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      examine = #{examine,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      createUserId = #{createuserid,jdbcType=VARCHAR},
+      updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      text = #{text,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_community" >
+    update wl_community
+    set actUrl = #{acturl,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      subTitle = #{subtitle,jdbcType=VARCHAR},
+      listImg = #{listimg,jdbcType=VARCHAR},
+      categoryId = #{categoryid,jdbcType=VARCHAR},
+      shareLinks = #{sharelinks,jdbcType=VARCHAR},
+      communityType = #{communitytype,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      examine = #{examine,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      createUserId = #{createuserid,jdbcType=VARCHAR},
+      updateUserId = #{updateuserid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

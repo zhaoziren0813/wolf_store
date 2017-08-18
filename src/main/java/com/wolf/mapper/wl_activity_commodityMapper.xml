@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_activity_commodityMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_activity_commodity" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="commodityId" property="commodityid" jdbcType="VARCHAR" />
+    <result column="cprice" property="cprice" jdbcType="INTEGER" />
+    <result column="oprice" property="oprice" jdbcType="INTEGER" />
+    <result column="hasFreight" property="hasfreight" jdbcType="INTEGER" />
+    <result column="startTime" property="starttime" jdbcType="TIMESTAMP" />
+    <result column="expiredTime" property="expiredtime" jdbcType="TIMESTAMP" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="describe" property="describe" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, commodityId, cprice, oprice, hasFreight, startTime, expiredTime, createTime, 
+    updateTime, type, status, describe
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_activity_commodity
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_activity_commodity
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_activity_commodity" >
+    insert into wl_activity_commodity (id, commodityId, cprice, 
+      oprice, hasFreight, startTime, 
+      expiredTime, createTime, updateTime, 
+      type, status, describe
+      )
+    values (#{id,jdbcType=VARCHAR}, #{commodityid,jdbcType=VARCHAR}, #{cprice,jdbcType=INTEGER}, 
+      #{oprice,jdbcType=INTEGER}, #{hasfreight,jdbcType=INTEGER}, #{starttime,jdbcType=TIMESTAMP}, 
+      #{expiredtime,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{type,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{describe,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_activity_commodity" >
+    insert into wl_activity_commodity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="commodityid != null" >
+        commodityId,
+      </if>
+      <if test="cprice != null" >
+        cprice,
+      </if>
+      <if test="oprice != null" >
+        oprice,
+      </if>
+      <if test="hasfreight != null" >
+        hasFreight,
+      </if>
+      <if test="starttime != null" >
+        startTime,
+      </if>
+      <if test="expiredtime != null" >
+        expiredTime,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="describe != null" >
+        describe,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityid != null" >
+        #{commodityid,jdbcType=VARCHAR},
+      </if>
+      <if test="cprice != null" >
+        #{cprice,jdbcType=INTEGER},
+      </if>
+      <if test="oprice != null" >
+        #{oprice,jdbcType=INTEGER},
+      </if>
+      <if test="hasfreight != null" >
+        #{hasfreight,jdbcType=INTEGER},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiredtime != null" >
+        #{expiredtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="describe != null" >
+        #{describe,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_activity_commodity" >
+    update wl_activity_commodity
+    <set >
+      <if test="commodityid != null" >
+        commodityId = #{commodityid,jdbcType=VARCHAR},
+      </if>
+      <if test="cprice != null" >
+        cprice = #{cprice,jdbcType=INTEGER},
+      </if>
+      <if test="oprice != null" >
+        oprice = #{oprice,jdbcType=INTEGER},
+      </if>
+      <if test="hasfreight != null" >
+        hasFreight = #{hasfreight,jdbcType=INTEGER},
+      </if>
+      <if test="starttime != null" >
+        startTime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiredtime != null" >
+        expiredTime = #{expiredtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="describe != null" >
+        describe = #{describe,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_activity_commodity" >
+    update wl_activity_commodity
+    set commodityId = #{commodityid,jdbcType=VARCHAR},
+      cprice = #{cprice,jdbcType=INTEGER},
+      oprice = #{oprice,jdbcType=INTEGER},
+      hasFreight = #{hasfreight,jdbcType=INTEGER},
+      startTime = #{starttime,jdbcType=TIMESTAMP},
+      expiredTime = #{expiredtime,jdbcType=TIMESTAMP},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      describe = #{describe,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

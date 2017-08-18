@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_adMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_ad" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="subjectId" property="subjectid" jdbcType="VARCHAR" />
+    <result column="adName" property="adname" jdbcType="VARCHAR" />
+    <result column="adImage" property="adimage" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="index" property="index" jdbcType="INTEGER" />
+    <result column="channel" property="channel" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, subjectId, adName, adImage, createTime, status, url, index, channel
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_ad
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_ad
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_ad" >
+    insert into wl_ad (id, subjectId, adName, 
+      adImage, createTime, status, 
+      url, index, channel
+      )
+    values (#{id,jdbcType=VARCHAR}, #{subjectid,jdbcType=VARCHAR}, #{adname,jdbcType=VARCHAR}, 
+      #{adimage,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT}, 
+      #{url,jdbcType=VARCHAR}, #{index,jdbcType=INTEGER}, #{channel,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_ad" >
+    insert into wl_ad
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="subjectid != null" >
+        subjectId,
+      </if>
+      <if test="adname != null" >
+        adName,
+      </if>
+      <if test="adimage != null" >
+        adImage,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="index != null" >
+        index,
+      </if>
+      <if test="channel != null" >
+        channel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectid != null" >
+        #{subjectid,jdbcType=VARCHAR},
+      </if>
+      <if test="adname != null" >
+        #{adname,jdbcType=VARCHAR},
+      </if>
+      <if test="adimage != null" >
+        #{adimage,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="index != null" >
+        #{index,jdbcType=INTEGER},
+      </if>
+      <if test="channel != null" >
+        #{channel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_ad" >
+    update wl_ad
+    <set >
+      <if test="subjectid != null" >
+        subjectId = #{subjectid,jdbcType=VARCHAR},
+      </if>
+      <if test="adname != null" >
+        adName = #{adname,jdbcType=VARCHAR},
+      </if>
+      <if test="adimage != null" >
+        adImage = #{adimage,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="index != null" >
+        index = #{index,jdbcType=INTEGER},
+      </if>
+      <if test="channel != null" >
+        channel = #{channel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_ad" >
+    update wl_ad
+    set subjectId = #{subjectid,jdbcType=VARCHAR},
+      adName = #{adname,jdbcType=VARCHAR},
+      adImage = #{adimage,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=TINYINT},
+      url = #{url,jdbcType=VARCHAR},
+      index = #{index,jdbcType=INTEGER},
+      channel = #{channel,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

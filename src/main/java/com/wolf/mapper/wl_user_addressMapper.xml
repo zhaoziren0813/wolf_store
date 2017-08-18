@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_user_addressMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_user_address" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="provinceId" property="provinceid" jdbcType="INTEGER" />
+    <result column="provinceName" property="provincename" jdbcType="VARCHAR" />
+    <result column="cityId" property="cityid" jdbcType="INTEGER" />
+    <result column="cityName" property="cityname" jdbcType="VARCHAR" />
+    <result column="areaId" property="areaid" jdbcType="INTEGER" />
+    <result column="areaName" property="areaname" jdbcType="VARCHAR" />
+    <result column="addressDetails" property="addressdetails" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="consigneeName" property="consigneename" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="is_default" property="isDefault" jdbcType="TINYINT" />
+    <result column="idCard" property="idcard" jdbcType="VARCHAR" />
+    <result column="plusCardImage" property="pluscardimage" jdbcType="VARCHAR" />
+    <result column="antiCardImage" property="anticardimage" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userId, provinceId, provinceName, cityId, cityName, areaId, areaName, addressDetails, 
+    code, consigneeName, phone, is_default, idCard, plusCardImage, antiCardImage, status, 
+    createTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_user_address
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_user_address
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_user_address" >
+    insert into wl_user_address (id, userId, provinceId, 
+      provinceName, cityId, cityName, 
+      areaId, areaName, addressDetails, 
+      code, consigneeName, phone, 
+      is_default, idCard, plusCardImage, 
+      antiCardImage, status, createTime
+      )
+    values (#{id,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{provinceid,jdbcType=INTEGER}, 
+      #{provincename,jdbcType=VARCHAR}, #{cityid,jdbcType=INTEGER}, #{cityname,jdbcType=VARCHAR}, 
+      #{areaid,jdbcType=INTEGER}, #{areaname,jdbcType=VARCHAR}, #{addressdetails,jdbcType=VARCHAR}, 
+      #{code,jdbcType=VARCHAR}, #{consigneename,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{isDefault,jdbcType=TINYINT}, #{idcard,jdbcType=VARCHAR}, #{pluscardimage,jdbcType=VARCHAR}, 
+      #{anticardimage,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{createtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_user_address" >
+    insert into wl_user_address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="provinceid != null" >
+        provinceId,
+      </if>
+      <if test="provincename != null" >
+        provinceName,
+      </if>
+      <if test="cityid != null" >
+        cityId,
+      </if>
+      <if test="cityname != null" >
+        cityName,
+      </if>
+      <if test="areaid != null" >
+        areaId,
+      </if>
+      <if test="areaname != null" >
+        areaName,
+      </if>
+      <if test="addressdetails != null" >
+        addressDetails,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="consigneename != null" >
+        consigneeName,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="isDefault != null" >
+        is_default,
+      </if>
+      <if test="idcard != null" >
+        idCard,
+      </if>
+      <if test="pluscardimage != null" >
+        plusCardImage,
+      </if>
+      <if test="anticardimage != null" >
+        antiCardImage,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceid != null" >
+        #{provinceid,jdbcType=INTEGER},
+      </if>
+      <if test="provincename != null" >
+        #{provincename,jdbcType=VARCHAR},
+      </if>
+      <if test="cityid != null" >
+        #{cityid,jdbcType=INTEGER},
+      </if>
+      <if test="cityname != null" >
+        #{cityname,jdbcType=VARCHAR},
+      </if>
+      <if test="areaid != null" >
+        #{areaid,jdbcType=INTEGER},
+      </if>
+      <if test="areaname != null" >
+        #{areaname,jdbcType=VARCHAR},
+      </if>
+      <if test="addressdetails != null" >
+        #{addressdetails,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneename != null" >
+        #{consigneename,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null" >
+        #{isDefault,jdbcType=TINYINT},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="pluscardimage != null" >
+        #{pluscardimage,jdbcType=VARCHAR},
+      </if>
+      <if test="anticardimage != null" >
+        #{anticardimage,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_user_address" >
+    update wl_user_address
+    <set >
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceid != null" >
+        provinceId = #{provinceid,jdbcType=INTEGER},
+      </if>
+      <if test="provincename != null" >
+        provinceName = #{provincename,jdbcType=VARCHAR},
+      </if>
+      <if test="cityid != null" >
+        cityId = #{cityid,jdbcType=INTEGER},
+      </if>
+      <if test="cityname != null" >
+        cityName = #{cityname,jdbcType=VARCHAR},
+      </if>
+      <if test="areaid != null" >
+        areaId = #{areaid,jdbcType=INTEGER},
+      </if>
+      <if test="areaname != null" >
+        areaName = #{areaname,jdbcType=VARCHAR},
+      </if>
+      <if test="addressdetails != null" >
+        addressDetails = #{addressdetails,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="consigneename != null" >
+        consigneeName = #{consigneename,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null" >
+        is_default = #{isDefault,jdbcType=TINYINT},
+      </if>
+      <if test="idcard != null" >
+        idCard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="pluscardimage != null" >
+        plusCardImage = #{pluscardimage,jdbcType=VARCHAR},
+      </if>
+      <if test="anticardimage != null" >
+        antiCardImage = #{anticardimage,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_user_address" >
+    update wl_user_address
+    set userId = #{userid,jdbcType=VARCHAR},
+      provinceId = #{provinceid,jdbcType=INTEGER},
+      provinceName = #{provincename,jdbcType=VARCHAR},
+      cityId = #{cityid,jdbcType=INTEGER},
+      cityName = #{cityname,jdbcType=VARCHAR},
+      areaId = #{areaid,jdbcType=INTEGER},
+      areaName = #{areaname,jdbcType=VARCHAR},
+      addressDetails = #{addressdetails,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      consigneeName = #{consigneename,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      is_default = #{isDefault,jdbcType=TINYINT},
+      idCard = #{idcard,jdbcType=VARCHAR},
+      plusCardImage = #{pluscardimage,jdbcType=VARCHAR},
+      antiCardImage = #{anticardimage,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      createTime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

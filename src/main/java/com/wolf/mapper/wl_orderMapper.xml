@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_orderMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_order" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="orderType" property="ordertype" jdbcType="INTEGER" />
+    <result column="orderNo" property="orderno" jdbcType="VARCHAR" />
+    <result column="channel" property="channel" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="groupBuyUserId" property="groupbuyuserid" jdbcType="VARCHAR" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+    <result column="masterMoney" property="mastermoney" jdbcType="INTEGER" />
+    <result column="orderMoney" property="ordermoney" jdbcType="INTEGER" />
+    <result column="discountMoney" property="discountmoney" jdbcType="INTEGER" />
+    <result column="freight" property="freight" jdbcType="INTEGER" />
+    <result column="freeFreight" property="freefreight" jdbcType="INTEGER" />
+    <result column="amountMoney" property="amountmoney" jdbcType="INTEGER" />
+    <result column="payType" property="paytype" jdbcType="INTEGER" />
+    <result column="payMoney" property="paymoney" jdbcType="INTEGER" />
+    <result column="payStatus" property="paystatus" jdbcType="INTEGER" />
+    <result column="payTime" property="paytime" jdbcType="TIMESTAMP" />
+    <result column="payDocument" property="paydocument" jdbcType="VARCHAR" />
+    <result column="mchId" property="mchid" jdbcType="VARCHAR" />
+    <result column="tradeNo" property="tradeno" jdbcType="VARCHAR" />
+    <result column="useIntegralTotal" property="useintegraltotal" jdbcType="INTEGER" />
+    <result column="useBalanceTotal" property="usebalancetotal" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="logisticsCode" property="logisticscode" jdbcType="VARCHAR" />
+    <result column="logisticsNo" property="logisticsno" jdbcType="VARCHAR" />
+    <result column="logisticsName" property="logisticsname" jdbcType="VARCHAR" />
+    <result column="addressId" property="addressid" jdbcType="VARCHAR" />
+    <result column="couponId" property="couponid" jdbcType="VARCHAR" />
+    <result column="allRefund" property="allrefund" jdbcType="INTEGER" />
+    <result column="allComment" property="allcomment" jdbcType="INTEGER" />
+    <result column="logisticsStatus" property="logisticsstatus" jdbcType="VARCHAR" />
+    <result column="proxyId" property="proxyid" jdbcType="VARCHAR" />
+    <result column="shareId" property="shareid" jdbcType="VARCHAR" />
+    <result column="shareCommission" property="sharecommission" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, orderType, orderNo, channel, userId, groupBuyUserId, token, masterMoney, orderMoney, 
+    discountMoney, freight, freeFreight, amountMoney, payType, payMoney, payStatus, payTime, 
+    payDocument, mchId, tradeNo, useIntegralTotal, useBalanceTotal, createTime, updateTime, 
+    status, logisticsCode, logisticsNo, logisticsName, addressId, couponId, allRefund, 
+    allComment, logisticsStatus, proxyId, shareId, shareCommission
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_order
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_order
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_order" >
+    insert into wl_order (id, orderType, orderNo, 
+      channel, userId, groupBuyUserId, 
+      token, masterMoney, orderMoney, 
+      discountMoney, freight, freeFreight, 
+      amountMoney, payType, payMoney, 
+      payStatus, payTime, payDocument, 
+      mchId, tradeNo, useIntegralTotal, 
+      useBalanceTotal, createTime, updateTime, 
+      status, logisticsCode, logisticsNo, 
+      logisticsName, addressId, couponId, 
+      allRefund, allComment, logisticsStatus, 
+      proxyId, shareId, shareCommission
+      )
+    values (#{id,jdbcType=VARCHAR}, #{ordertype,jdbcType=INTEGER}, #{orderno,jdbcType=VARCHAR}, 
+      #{channel,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{groupbuyuserid,jdbcType=VARCHAR}, 
+      #{token,jdbcType=VARCHAR}, #{mastermoney,jdbcType=INTEGER}, #{ordermoney,jdbcType=INTEGER}, 
+      #{discountmoney,jdbcType=INTEGER}, #{freight,jdbcType=INTEGER}, #{freefreight,jdbcType=INTEGER}, 
+      #{amountmoney,jdbcType=INTEGER}, #{paytype,jdbcType=INTEGER}, #{paymoney,jdbcType=INTEGER}, 
+      #{paystatus,jdbcType=INTEGER}, #{paytime,jdbcType=TIMESTAMP}, #{paydocument,jdbcType=VARCHAR}, 
+      #{mchid,jdbcType=VARCHAR}, #{tradeno,jdbcType=VARCHAR}, #{useintegraltotal,jdbcType=INTEGER}, 
+      #{usebalancetotal,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{logisticscode,jdbcType=VARCHAR}, #{logisticsno,jdbcType=VARCHAR}, 
+      #{logisticsname,jdbcType=VARCHAR}, #{addressid,jdbcType=VARCHAR}, #{couponid,jdbcType=VARCHAR}, 
+      #{allrefund,jdbcType=INTEGER}, #{allcomment,jdbcType=INTEGER}, #{logisticsstatus,jdbcType=VARCHAR}, 
+      #{proxyid,jdbcType=VARCHAR}, #{shareid,jdbcType=VARCHAR}, #{sharecommission,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_order" >
+    insert into wl_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ordertype != null" >
+        orderType,
+      </if>
+      <if test="orderno != null" >
+        orderNo,
+      </if>
+      <if test="channel != null" >
+        channel,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="groupbuyuserid != null" >
+        groupBuyUserId,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="mastermoney != null" >
+        masterMoney,
+      </if>
+      <if test="ordermoney != null" >
+        orderMoney,
+      </if>
+      <if test="discountmoney != null" >
+        discountMoney,
+      </if>
+      <if test="freight != null" >
+        freight,
+      </if>
+      <if test="freefreight != null" >
+        freeFreight,
+      </if>
+      <if test="amountmoney != null" >
+        amountMoney,
+      </if>
+      <if test="paytype != null" >
+        payType,
+      </if>
+      <if test="paymoney != null" >
+        payMoney,
+      </if>
+      <if test="paystatus != null" >
+        payStatus,
+      </if>
+      <if test="paytime != null" >
+        payTime,
+      </if>
+      <if test="paydocument != null" >
+        payDocument,
+      </if>
+      <if test="mchid != null" >
+        mchId,
+      </if>
+      <if test="tradeno != null" >
+        tradeNo,
+      </if>
+      <if test="useintegraltotal != null" >
+        useIntegralTotal,
+      </if>
+      <if test="usebalancetotal != null" >
+        useBalanceTotal,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="logisticscode != null" >
+        logisticsCode,
+      </if>
+      <if test="logisticsno != null" >
+        logisticsNo,
+      </if>
+      <if test="logisticsname != null" >
+        logisticsName,
+      </if>
+      <if test="addressid != null" >
+        addressId,
+      </if>
+      <if test="couponid != null" >
+        couponId,
+      </if>
+      <if test="allrefund != null" >
+        allRefund,
+      </if>
+      <if test="allcomment != null" >
+        allComment,
+      </if>
+      <if test="logisticsstatus != null" >
+        logisticsStatus,
+      </if>
+      <if test="proxyid != null" >
+        proxyId,
+      </if>
+      <if test="shareid != null" >
+        shareId,
+      </if>
+      <if test="sharecommission != null" >
+        shareCommission,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="ordertype != null" >
+        #{ordertype,jdbcType=INTEGER},
+      </if>
+      <if test="orderno != null" >
+        #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        #{channel,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="groupbuyuserid != null" >
+        #{groupbuyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="mastermoney != null" >
+        #{mastermoney,jdbcType=INTEGER},
+      </if>
+      <if test="ordermoney != null" >
+        #{ordermoney,jdbcType=INTEGER},
+      </if>
+      <if test="discountmoney != null" >
+        #{discountmoney,jdbcType=INTEGER},
+      </if>
+      <if test="freight != null" >
+        #{freight,jdbcType=INTEGER},
+      </if>
+      <if test="freefreight != null" >
+        #{freefreight,jdbcType=INTEGER},
+      </if>
+      <if test="amountmoney != null" >
+        #{amountmoney,jdbcType=INTEGER},
+      </if>
+      <if test="paytype != null" >
+        #{paytype,jdbcType=INTEGER},
+      </if>
+      <if test="paymoney != null" >
+        #{paymoney,jdbcType=INTEGER},
+      </if>
+      <if test="paystatus != null" >
+        #{paystatus,jdbcType=INTEGER},
+      </if>
+      <if test="paytime != null" >
+        #{paytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paydocument != null" >
+        #{paydocument,jdbcType=VARCHAR},
+      </if>
+      <if test="mchid != null" >
+        #{mchid,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeno != null" >
+        #{tradeno,jdbcType=VARCHAR},
+      </if>
+      <if test="useintegraltotal != null" >
+        #{useintegraltotal,jdbcType=INTEGER},
+      </if>
+      <if test="usebalancetotal != null" >
+        #{usebalancetotal,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="logisticscode != null" >
+        #{logisticscode,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsno != null" >
+        #{logisticsno,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsname != null" >
+        #{logisticsname,jdbcType=VARCHAR},
+      </if>
+      <if test="addressid != null" >
+        #{addressid,jdbcType=VARCHAR},
+      </if>
+      <if test="couponid != null" >
+        #{couponid,jdbcType=VARCHAR},
+      </if>
+      <if test="allrefund != null" >
+        #{allrefund,jdbcType=INTEGER},
+      </if>
+      <if test="allcomment != null" >
+        #{allcomment,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsstatus != null" >
+        #{logisticsstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyid != null" >
+        #{proxyid,jdbcType=VARCHAR},
+      </if>
+      <if test="shareid != null" >
+        #{shareid,jdbcType=VARCHAR},
+      </if>
+      <if test="sharecommission != null" >
+        #{sharecommission,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_order" >
+    update wl_order
+    <set >
+      <if test="ordertype != null" >
+        orderType = #{ordertype,jdbcType=INTEGER},
+      </if>
+      <if test="orderno != null" >
+        orderNo = #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        channel = #{channel,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="groupbuyuserid != null" >
+        groupBuyUserId = #{groupbuyuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="mastermoney != null" >
+        masterMoney = #{mastermoney,jdbcType=INTEGER},
+      </if>
+      <if test="ordermoney != null" >
+        orderMoney = #{ordermoney,jdbcType=INTEGER},
+      </if>
+      <if test="discountmoney != null" >
+        discountMoney = #{discountmoney,jdbcType=INTEGER},
+      </if>
+      <if test="freight != null" >
+        freight = #{freight,jdbcType=INTEGER},
+      </if>
+      <if test="freefreight != null" >
+        freeFreight = #{freefreight,jdbcType=INTEGER},
+      </if>
+      <if test="amountmoney != null" >
+        amountMoney = #{amountmoney,jdbcType=INTEGER},
+      </if>
+      <if test="paytype != null" >
+        payType = #{paytype,jdbcType=INTEGER},
+      </if>
+      <if test="paymoney != null" >
+        payMoney = #{paymoney,jdbcType=INTEGER},
+      </if>
+      <if test="paystatus != null" >
+        payStatus = #{paystatus,jdbcType=INTEGER},
+      </if>
+      <if test="paytime != null" >
+        payTime = #{paytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paydocument != null" >
+        payDocument = #{paydocument,jdbcType=VARCHAR},
+      </if>
+      <if test="mchid != null" >
+        mchId = #{mchid,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeno != null" >
+        tradeNo = #{tradeno,jdbcType=VARCHAR},
+      </if>
+      <if test="useintegraltotal != null" >
+        useIntegralTotal = #{useintegraltotal,jdbcType=INTEGER},
+      </if>
+      <if test="usebalancetotal != null" >
+        useBalanceTotal = #{usebalancetotal,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="logisticscode != null" >
+        logisticsCode = #{logisticscode,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsno != null" >
+        logisticsNo = #{logisticsno,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsname != null" >
+        logisticsName = #{logisticsname,jdbcType=VARCHAR},
+      </if>
+      <if test="addressid != null" >
+        addressId = #{addressid,jdbcType=VARCHAR},
+      </if>
+      <if test="couponid != null" >
+        couponId = #{couponid,jdbcType=VARCHAR},
+      </if>
+      <if test="allrefund != null" >
+        allRefund = #{allrefund,jdbcType=INTEGER},
+      </if>
+      <if test="allcomment != null" >
+        allComment = #{allcomment,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsstatus != null" >
+        logisticsStatus = #{logisticsstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyid != null" >
+        proxyId = #{proxyid,jdbcType=VARCHAR},
+      </if>
+      <if test="shareid != null" >
+        shareId = #{shareid,jdbcType=VARCHAR},
+      </if>
+      <if test="sharecommission != null" >
+        shareCommission = #{sharecommission,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_order" >
+    update wl_order
+    set orderType = #{ordertype,jdbcType=INTEGER},
+      orderNo = #{orderno,jdbcType=VARCHAR},
+      channel = #{channel,jdbcType=INTEGER},
+      userId = #{userid,jdbcType=VARCHAR},
+      groupBuyUserId = #{groupbuyuserid,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
+      masterMoney = #{mastermoney,jdbcType=INTEGER},
+      orderMoney = #{ordermoney,jdbcType=INTEGER},
+      discountMoney = #{discountmoney,jdbcType=INTEGER},
+      freight = #{freight,jdbcType=INTEGER},
+      freeFreight = #{freefreight,jdbcType=INTEGER},
+      amountMoney = #{amountmoney,jdbcType=INTEGER},
+      payType = #{paytype,jdbcType=INTEGER},
+      payMoney = #{paymoney,jdbcType=INTEGER},
+      payStatus = #{paystatus,jdbcType=INTEGER},
+      payTime = #{paytime,jdbcType=TIMESTAMP},
+      payDocument = #{paydocument,jdbcType=VARCHAR},
+      mchId = #{mchid,jdbcType=VARCHAR},
+      tradeNo = #{tradeno,jdbcType=VARCHAR},
+      useIntegralTotal = #{useintegraltotal,jdbcType=INTEGER},
+      useBalanceTotal = #{usebalancetotal,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      logisticsCode = #{logisticscode,jdbcType=VARCHAR},
+      logisticsNo = #{logisticsno,jdbcType=VARCHAR},
+      logisticsName = #{logisticsname,jdbcType=VARCHAR},
+      addressId = #{addressid,jdbcType=VARCHAR},
+      couponId = #{couponid,jdbcType=VARCHAR},
+      allRefund = #{allrefund,jdbcType=INTEGER},
+      allComment = #{allcomment,jdbcType=INTEGER},
+      logisticsStatus = #{logisticsstatus,jdbcType=VARCHAR},
+      proxyId = #{proxyid,jdbcType=VARCHAR},
+      shareId = #{shareid,jdbcType=VARCHAR},
+      shareCommission = #{sharecommission,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

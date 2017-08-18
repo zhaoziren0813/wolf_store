@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_sys_dictMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_sys_dict" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="catalogCode" property="catalogcode" jdbcType="VARCHAR" />
+    <result column="catalogName" property="catalogname" jdbcType="VARCHAR" />
+    <result column="catalogValue" property="catalogvalue" jdbcType="VARCHAR" />
+    <result column="catalogDesc" property="catalogdesc" jdbcType="VARCHAR" />
+    <result column="keyCode" property="keycode" jdbcType="VARCHAR" />
+    <result column="keyName" property="keyname" jdbcType="VARCHAR" />
+    <result column="keyDesc" property="keydesc" jdbcType="VARCHAR" />
+    <result column="parentId" property="parentid" jdbcType="INTEGER" />
+    <result column="validFlag" property="validflag" jdbcType="CHAR" />
+    <result column="createdTime" property="createdtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, catalogCode, catalogName, catalogValue, catalogDesc, keyCode, keyName, keyDesc, 
+    parentId, validFlag, createdTime, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_sys_dict
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from wl_sys_dict
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_sys_dict" >
+    insert into wl_sys_dict (id, catalogCode, catalogName, 
+      catalogValue, catalogDesc, keyCode, 
+      keyName, keyDesc, parentId, 
+      validFlag, createdTime, updateTime
+      )
+    values (#{id,jdbcType=INTEGER}, #{catalogcode,jdbcType=VARCHAR}, #{catalogname,jdbcType=VARCHAR}, 
+      #{catalogvalue,jdbcType=VARCHAR}, #{catalogdesc,jdbcType=VARCHAR}, #{keycode,jdbcType=VARCHAR}, 
+      #{keyname,jdbcType=VARCHAR}, #{keydesc,jdbcType=VARCHAR}, #{parentid,jdbcType=INTEGER}, 
+      #{validflag,jdbcType=CHAR}, #{createdtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_sys_dict" >
+    insert into wl_sys_dict
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="catalogcode != null" >
+        catalogCode,
+      </if>
+      <if test="catalogname != null" >
+        catalogName,
+      </if>
+      <if test="catalogvalue != null" >
+        catalogValue,
+      </if>
+      <if test="catalogdesc != null" >
+        catalogDesc,
+      </if>
+      <if test="keycode != null" >
+        keyCode,
+      </if>
+      <if test="keyname != null" >
+        keyName,
+      </if>
+      <if test="keydesc != null" >
+        keyDesc,
+      </if>
+      <if test="parentid != null" >
+        parentId,
+      </if>
+      <if test="validflag != null" >
+        validFlag,
+      </if>
+      <if test="createdtime != null" >
+        createdTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="catalogcode != null" >
+        #{catalogcode,jdbcType=VARCHAR},
+      </if>
+      <if test="catalogname != null" >
+        #{catalogname,jdbcType=VARCHAR},
+      </if>
+      <if test="catalogvalue != null" >
+        #{catalogvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="catalogdesc != null" >
+        #{catalogdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="keycode != null" >
+        #{keycode,jdbcType=VARCHAR},
+      </if>
+      <if test="keyname != null" >
+        #{keyname,jdbcType=VARCHAR},
+      </if>
+      <if test="keydesc != null" >
+        #{keydesc,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="validflag != null" >
+        #{validflag,jdbcType=CHAR},
+      </if>
+      <if test="createdtime != null" >
+        #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_sys_dict" >
+    update wl_sys_dict
+    <set >
+      <if test="catalogcode != null" >
+        catalogCode = #{catalogcode,jdbcType=VARCHAR},
+      </if>
+      <if test="catalogname != null" >
+        catalogName = #{catalogname,jdbcType=VARCHAR},
+      </if>
+      <if test="catalogvalue != null" >
+        catalogValue = #{catalogvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="catalogdesc != null" >
+        catalogDesc = #{catalogdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="keycode != null" >
+        keyCode = #{keycode,jdbcType=VARCHAR},
+      </if>
+      <if test="keyname != null" >
+        keyName = #{keyname,jdbcType=VARCHAR},
+      </if>
+      <if test="keydesc != null" >
+        keyDesc = #{keydesc,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        parentId = #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="validflag != null" >
+        validFlag = #{validflag,jdbcType=CHAR},
+      </if>
+      <if test="createdtime != null" >
+        createdTime = #{createdtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_sys_dict" >
+    update wl_sys_dict
+    set catalogCode = #{catalogcode,jdbcType=VARCHAR},
+      catalogName = #{catalogname,jdbcType=VARCHAR},
+      catalogValue = #{catalogvalue,jdbcType=VARCHAR},
+      catalogDesc = #{catalogdesc,jdbcType=VARCHAR},
+      keyCode = #{keycode,jdbcType=VARCHAR},
+      keyName = #{keyname,jdbcType=VARCHAR},
+      keyDesc = #{keydesc,jdbcType=VARCHAR},
+      parentId = #{parentid,jdbcType=INTEGER},
+      validFlag = #{validflag,jdbcType=CHAR},
+      createdTime = #{createdtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

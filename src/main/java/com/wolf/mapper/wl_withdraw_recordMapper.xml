@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_withdraw_recordMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_withdraw_record" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="withdrawNo" property="withdrawno" jdbcType="VARCHAR" />
+    <result column="operatorType" property="operatortype" jdbcType="INTEGER" />
+    <result column="operator" property="operator" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="discription" property="discription" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, withdrawNo, operatorType, operator, createTime, discription
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_withdraw_record
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_withdraw_record
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_withdraw_record" >
+    insert into wl_withdraw_record (id, withdrawNo, operatorType, 
+      operator, createTime, discription
+      )
+    values (#{id,jdbcType=VARCHAR}, #{withdrawno,jdbcType=VARCHAR}, #{operatortype,jdbcType=INTEGER}, 
+      #{operator,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{discription,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_withdraw_record" >
+    insert into wl_withdraw_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="withdrawno != null" >
+        withdrawNo,
+      </if>
+      <if test="operatortype != null" >
+        operatorType,
+      </if>
+      <if test="operator != null" >
+        operator,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="discription != null" >
+        discription,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="withdrawno != null" >
+        #{withdrawno,jdbcType=VARCHAR},
+      </if>
+      <if test="operatortype != null" >
+        #{operatortype,jdbcType=INTEGER},
+      </if>
+      <if test="operator != null" >
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="discription != null" >
+        #{discription,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_withdraw_record" >
+    update wl_withdraw_record
+    <set >
+      <if test="withdrawno != null" >
+        withdrawNo = #{withdrawno,jdbcType=VARCHAR},
+      </if>
+      <if test="operatortype != null" >
+        operatorType = #{operatortype,jdbcType=INTEGER},
+      </if>
+      <if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="discription != null" >
+        discription = #{discription,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_withdraw_record" >
+    update wl_withdraw_record
+    set withdrawNo = #{withdrawno,jdbcType=VARCHAR},
+      operatorType = #{operatortype,jdbcType=INTEGER},
+      operator = #{operator,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      discription = #{discription,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

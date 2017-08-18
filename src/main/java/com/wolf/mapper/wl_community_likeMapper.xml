@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_community_likeMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_community_like" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="communityId" property="communityid" jdbcType="VARCHAR" />
+    <result column="userId" property="userid" jdbcType="VARCHAR" />
+    <result column="collectionType" property="collectiontype" jdbcType="INTEGER" />
+    <result column="likeType" property="liketype" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, communityId, userId, collectionType, likeType, createTime, updateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_community_like
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_community_like
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_community_like" >
+    insert into wl_community_like (id, communityId, userId, 
+      collectionType, likeType, createTime, 
+      updateTime)
+    values (#{id,jdbcType=VARCHAR}, #{communityid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
+      #{collectiontype,jdbcType=INTEGER}, #{liketype,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_community_like" >
+    insert into wl_community_like
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="communityid != null" >
+        communityId,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="collectiontype != null" >
+        collectionType,
+      </if>
+      <if test="liketype != null" >
+        likeType,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="communityid != null" >
+        #{communityid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="collectiontype != null" >
+        #{collectiontype,jdbcType=INTEGER},
+      </if>
+      <if test="liketype != null" >
+        #{liketype,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_community_like" >
+    update wl_community_like
+    <set >
+      <if test="communityid != null" >
+        communityId = #{communityid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="collectiontype != null" >
+        collectionType = #{collectiontype,jdbcType=INTEGER},
+      </if>
+      <if test="liketype != null" >
+        likeType = #{liketype,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_community_like" >
+    update wl_community_like
+    set communityId = #{communityid,jdbcType=VARCHAR},
+      userId = #{userid,jdbcType=VARCHAR},
+      collectionType = #{collectiontype,jdbcType=INTEGER},
+      likeType = #{liketype,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

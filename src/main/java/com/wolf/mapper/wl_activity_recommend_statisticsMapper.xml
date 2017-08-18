@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_activity_recommend_statisticsMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_activity_recommend_statistics" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="recommendUserId" property="recommenduserid" jdbcType="VARCHAR" />
+    <result column="recommendCount" property="recommendcount" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, recommendUserId, recommendCount, createTime, updateTime, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_activity_recommend_statistics
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_activity_recommend_statistics
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_activity_recommend_statistics" >
+    insert into wl_activity_recommend_statistics (id, recommendUserId, recommendCount, 
+      createTime, updateTime, status
+      )
+    values (#{id,jdbcType=VARCHAR}, #{recommenduserid,jdbcType=VARCHAR}, #{recommendcount,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_activity_recommend_statistics" >
+    insert into wl_activity_recommend_statistics
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="recommenduserid != null" >
+        recommendUserId,
+      </if>
+      <if test="recommendcount != null" >
+        recommendCount,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="recommenduserid != null" >
+        #{recommenduserid,jdbcType=VARCHAR},
+      </if>
+      <if test="recommendcount != null" >
+        #{recommendcount,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_activity_recommend_statistics" >
+    update wl_activity_recommend_statistics
+    <set >
+      <if test="recommenduserid != null" >
+        recommendUserId = #{recommenduserid,jdbcType=VARCHAR},
+      </if>
+      <if test="recommendcount != null" >
+        recommendCount = #{recommendcount,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_activity_recommend_statistics" >
+    update wl_activity_recommend_statistics
+    set recommendUserId = #{recommenduserid,jdbcType=VARCHAR},
+      recommendCount = #{recommendcount,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

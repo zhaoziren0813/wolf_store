@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wolf.repository.wl_country_shopMapper" >
+  <resultMap id="BaseResultMap" type="com.wolf.pojo.wl_country_shop" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="countryCode" property="countrycode" jdbcType="VARCHAR" />
+    <result column="chineseName" property="chinesename" jdbcType="VARCHAR" />
+    <result column="englishName" property="englishname" jdbcType="VARCHAR" />
+    <result column="countryIndex" property="countryindex" jdbcType="INTEGER" />
+    <result column="homePageImage" property="homepageimage" jdbcType="VARCHAR" />
+    <result column="categoryImage" property="categoryimage" jdbcType="VARCHAR" />
+    <result column="topImage" property="topimage" jdbcType="VARCHAR" />
+    <result column="createUserId" property="createuserid" jdbcType="VARCHAR" />
+    <result column="createDateTime" property="createdatetime" jdbcType="TIMESTAMP" />
+    <result column="updateUserId" property="updateuserid" jdbcType="VARCHAR" />
+    <result column="updateDateTime" property="updatedatetime" jdbcType="TIMESTAMP" />
+    <result column="disabled" property="disabled" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, countryCode, chineseName, englishName, countryIndex, homePageImage, categoryImage, 
+    topImage, createUserId, createDateTime, updateUserId, updateDateTime, disabled
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wl_country_shop
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wl_country_shop
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.wolf.pojo.wl_country_shop" >
+    insert into wl_country_shop (id, countryCode, chineseName, 
+      englishName, countryIndex, homePageImage, 
+      categoryImage, topImage, createUserId, 
+      createDateTime, updateUserId, updateDateTime, 
+      disabled)
+    values (#{id,jdbcType=VARCHAR}, #{countrycode,jdbcType=VARCHAR}, #{chinesename,jdbcType=VARCHAR}, 
+      #{englishname,jdbcType=VARCHAR}, #{countryindex,jdbcType=INTEGER}, #{homepageimage,jdbcType=VARCHAR}, 
+      #{categoryimage,jdbcType=VARCHAR}, #{topimage,jdbcType=VARCHAR}, #{createuserid,jdbcType=VARCHAR}, 
+      #{createdatetime,jdbcType=TIMESTAMP}, #{updateuserid,jdbcType=VARCHAR}, #{updatedatetime,jdbcType=TIMESTAMP}, 
+      #{disabled,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wolf.pojo.wl_country_shop" >
+    insert into wl_country_shop
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="countrycode != null" >
+        countryCode,
+      </if>
+      <if test="chinesename != null" >
+        chineseName,
+      </if>
+      <if test="englishname != null" >
+        englishName,
+      </if>
+      <if test="countryindex != null" >
+        countryIndex,
+      </if>
+      <if test="homepageimage != null" >
+        homePageImage,
+      </if>
+      <if test="categoryimage != null" >
+        categoryImage,
+      </if>
+      <if test="topimage != null" >
+        topImage,
+      </if>
+      <if test="createuserid != null" >
+        createUserId,
+      </if>
+      <if test="createdatetime != null" >
+        createDateTime,
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId,
+      </if>
+      <if test="updatedatetime != null" >
+        updateDateTime,
+      </if>
+      <if test="disabled != null" >
+        disabled,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="countrycode != null" >
+        #{countrycode,jdbcType=VARCHAR},
+      </if>
+      <if test="chinesename != null" >
+        #{chinesename,jdbcType=VARCHAR},
+      </if>
+      <if test="englishname != null" >
+        #{englishname,jdbcType=VARCHAR},
+      </if>
+      <if test="countryindex != null" >
+        #{countryindex,jdbcType=INTEGER},
+      </if>
+      <if test="homepageimage != null" >
+        #{homepageimage,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryimage != null" >
+        #{categoryimage,jdbcType=VARCHAR},
+      </if>
+      <if test="topimage != null" >
+        #{topimage,jdbcType=VARCHAR},
+      </if>
+      <if test="createuserid != null" >
+        #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdatetime != null" >
+        #{createdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedatetime != null" >
+        #{updatedatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="disabled != null" >
+        #{disabled,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wolf.pojo.wl_country_shop" >
+    update wl_country_shop
+    <set >
+      <if test="countrycode != null" >
+        countryCode = #{countrycode,jdbcType=VARCHAR},
+      </if>
+      <if test="chinesename != null" >
+        chineseName = #{chinesename,jdbcType=VARCHAR},
+      </if>
+      <if test="englishname != null" >
+        englishName = #{englishname,jdbcType=VARCHAR},
+      </if>
+      <if test="countryindex != null" >
+        countryIndex = #{countryindex,jdbcType=INTEGER},
+      </if>
+      <if test="homepageimage != null" >
+        homePageImage = #{homepageimage,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryimage != null" >
+        categoryImage = #{categoryimage,jdbcType=VARCHAR},
+      </if>
+      <if test="topimage != null" >
+        topImage = #{topimage,jdbcType=VARCHAR},
+      </if>
+      <if test="createuserid != null" >
+        createUserId = #{createuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createdatetime != null" >
+        createDateTime = #{createdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuserid != null" >
+        updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedatetime != null" >
+        updateDateTime = #{updatedatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="disabled != null" >
+        disabled = #{disabled,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wolf.pojo.wl_country_shop" >
+    update wl_country_shop
+    set countryCode = #{countrycode,jdbcType=VARCHAR},
+      chineseName = #{chinesename,jdbcType=VARCHAR},
+      englishName = #{englishname,jdbcType=VARCHAR},
+      countryIndex = #{countryindex,jdbcType=INTEGER},
+      homePageImage = #{homepageimage,jdbcType=VARCHAR},
+      categoryImage = #{categoryimage,jdbcType=VARCHAR},
+      topImage = #{topimage,jdbcType=VARCHAR},
+      createUserId = #{createuserid,jdbcType=VARCHAR},
+      createDateTime = #{createdatetime,jdbcType=TIMESTAMP},
+      updateUserId = #{updateuserid,jdbcType=VARCHAR},
+      updateDateTime = #{updatedatetime,jdbcType=TIMESTAMP},
+      disabled = #{disabled,jdbcType=BIT}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
